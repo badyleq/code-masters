@@ -14,7 +14,7 @@ class JavaExecutorSpec : StringSpec() {
                         System.out.println("Hello World");
                     }
                 }
-            """.trimIndent())
+            """.trimIndent(), "Hello:main:")
         }
     }
 }

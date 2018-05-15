@@ -6,5 +6,5 @@ data class Exercise(
         val initialCode: String,
         val correctAnswer: String,
         val validationExpression: String,
-        val executionPoint: String /** TODO: zastanowic sie co dokladnie ma uruchomiac executor, jak definiowac kod do uruchomenia */) {
+        val executionPoint: String = "") {
 }

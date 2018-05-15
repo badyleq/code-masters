@@ -4,6 +4,6 @@ import edu.codemasters.learning.domain.ExecutionResult
 
 interface Executor {
 
-    fun execute(code: String): ExecutionResult
+    fun execute(code: String, executionPoint: String): ExecutionResult
 
 }
