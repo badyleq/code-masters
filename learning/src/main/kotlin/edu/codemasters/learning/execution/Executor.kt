@@ -1,4 +1,4 @@
-package edu.codemasters.learning.executor
+package edu.codemasters.learning.execution
 
 interface Executor {
 
