@@ -75,7 +75,7 @@ kreatora kursu oraz zadań).
 Rejestracja konta przebiegać będzie zarówno standardową ścieżką (z potwierdzeniem adresu email)jak i za pośrednictwem oAuth 
 z wykorzystaniem konta na facebooku, gitlabie oraz google.
 
-![Szablon rejestracji](images/szablony/Register.png)
+![Szablon rejestracji](images/szablony/Register.PNG)
 
 *Ilustracja 3. Szablon rejestracji*
 
@@ -83,7 +83,7 @@ z wykorzystaniem konta na facebooku, gitlabie oraz google.
 Uwierzytelnienie możliwe będzie również przy użyciu oAuth z aplikacji wymienionych w **MOK.1**. Dodatkowo sesja zapisywana będzie w 
 ciasteczku. Czas życia ciasteczka będzie nieograniczony - usuwane będzie tylko w momencie wylogowania z systemu **MOK.3**.
 
-![Szablon logowania](images/szablony/Login.png)
+![Szablon logowania](images/szablony/Login.PNG)
 
 *Ilustracja 4. Szablon logowania*
 
