@@ -1,3 +1,4 @@
 rootProject.name = 'code-masters'
 include 'learning'
+include 'authentication'
 

@@ -1,4 +1,4 @@
-# Code master - platform for learning programing
+# Code masters - platform for learning programing
 
 ## Used technologies
 
@@ -7,4 +7,12 @@ For backend:
   * Kotlin
   
 For frontend:
-  *   
+  * React
+  * Typescript
+  * Monaco editor
+
+# Installation
+
+# Authors
+
+# License

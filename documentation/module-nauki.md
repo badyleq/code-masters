@@ -1,6 +1,6 @@
-**Dokument techniczny projektu Coducator**
+**Dokument techniczny projektu Code masters**
 
-Celem dokumentu jest opisanie działania systemu **Coducator** służącego do przeprowadzania kursów dedykowanych do języków
+Celem dokumentu jest opisanie działania systemu **Code masters** służącego do przeprowadzania kursów dedykowanych do języków
 programowania. System wzorowany jest na podstawie [CodeAcademy](https://www.codecademy.com).
 
 # 1. Wstęp

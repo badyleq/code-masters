@@ -1,8 +1,5 @@
-group 'edu.codemasters'
-version '1.0-SNAPSHOT'
-
 buildscript {
-    ext.kotlin_version = '1.1.4-3'
+    ext.kotlin_version = '1.2.41'
 
     repositories {
         mavenCentral()
@@ -12,14 +9,17 @@ buildscript {
     }
 }
 
+group 'edu.codemasters'
+version '1.0-SNAPSHOT'
+
 apply plugin: 'kotlin'
 
-repositories { 
+repositories {
     mavenCentral()
 }
 
 dependencies {
-    compile "org.jetbrains.kotlin:kotlin-stdlib-jre8:$kotlin_version"
+    compile "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
 }
 
 compileKotlin {
