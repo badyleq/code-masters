@@ -1,4 +1,4 @@
-package executor
+package edu.codemasters.learning.executor
 
 import io.kotlintest.specs.StringSpec
 

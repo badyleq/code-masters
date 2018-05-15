@@ -1,8 +1,8 @@
-package executor.javac
+package edu.codemasters.learning.executor.javac
 
 import com.google.common.collect.Lists.newArrayList
-import executor.CompilationUnit
-import executor.JavaMemoryObject
+import edu.codemasters.learning.executor.CompilationUnit
+import edu.codemasters.learning.executor.JavaMemoryObject
 import java.io.IOException
 import javax.tools.FileObject
 import javax.tools.ForwardingJavaFileManager

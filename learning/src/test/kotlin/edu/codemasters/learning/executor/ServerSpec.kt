@@ -1,5 +1,6 @@
-import executor.CompilationPackageLoader
-import executor.javac.InMemoryCompiler
+package edu.codemasters.learning.executor
+
+import edu.codemasters.learning.executor.javac.InMemoryCompiler
 import io.kotlintest.shouldBe
 import io.kotlintest.specs.StringSpec
 import org.assertj.core.api.Assertions.assertThat

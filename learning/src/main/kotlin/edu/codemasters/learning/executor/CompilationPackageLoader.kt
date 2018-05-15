@@ -1,7 +1,7 @@
-package executor
+package edu.codemasters.learning.executor
 
 import com.google.common.collect.Maps
-import executor.javac.ByteArrayClassLoader
+import edu.codemasters.learning.executor.javac.ByteArrayClassLoader
 
 class CompilationPackageLoader {
     private val BY_CLASS_NAME = { aClass: Class<*>? -> aClass?.name }

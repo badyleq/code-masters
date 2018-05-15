@@ -1,9 +1,8 @@
-package executor.javac
+package edu.codemasters.learning.executor.javac
 
-import com.google.common.annotations.VisibleForTesting
 import com.google.common.collect.ImmutableMap
 import com.google.common.collect.Lists.newArrayList
-import executor.CompilationPackage
+import edu.codemasters.learning.executor.CompilationPackage
 import java.net.URLClassLoader
 import java.util.*
 import javax.tools.DiagnosticCollector
