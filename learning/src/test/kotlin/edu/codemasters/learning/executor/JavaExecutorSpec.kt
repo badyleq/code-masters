@@ -1,5 +1,6 @@
 package edu.codemasters.learning.executor
 
+import edu.codemasters.learning.execution.javac.JavaExecutor
 import io.kotlintest.specs.StringSpec
 
 class JavaExecutorSpec : StringSpec() {

@@ -1,4 +1,4 @@
-package edu.codemasters.learning.execution
+package edu.codemasters.learning.domain
 
 data class ExecutionResult(
         val isCompiled: Boolean,

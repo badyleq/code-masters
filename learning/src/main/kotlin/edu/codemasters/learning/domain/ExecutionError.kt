@@ -1,4 +1,4 @@
-package edu.codemasters.learning.execution
+package edu.codemasters.learning.domain
 
 enum class ErrorType { COMPILATION, RUNTIME }
 
