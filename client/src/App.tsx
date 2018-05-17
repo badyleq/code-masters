@@ -2,9 +2,6 @@ import MonacoEditor from 'react-monaco-editor';
 import * as React from 'react';
 import './App.css';
 import Highlight from 'react-highlight'
-import Paper from "@material-ui/core/Paper";
-import Tabs from "@material-ui/core/Tabs";
-import Tab from "@material-ui/core/Tab";
 import Button from "@material-ui/core/Button";
 import Grid from '@material-ui/core/Grid';
 import Typography from "@material-ui/core/Typography";
@@ -12,6 +9,12 @@ import Checkbox from "@material-ui/core/Checkbox";
 import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemText from "@material-ui/core/ListItemText";
+import Icon from "@material-ui/core/Icon";
+import green from '@material-ui/core/colors/green';
+import red from '@material-ui/core/colors/red';
+import grey from '@material-ui/core/colors/grey';
+import AppBar from "@material-ui/core/AppBar";
+import Toolbar from "@material-ui/core/Toolbar";
 import ICodeEditor = monaco.editor.ICodeEditor;
 
 class App extends React.Component {
@@ -41,6 +44,17 @@ public class Hello {
         });
     }
 
+    public getCheckboxColor(value: number) {
+        if (value === 0) {
+            return green[500];
+        }
+        else if (value === 1) {
+            return red[500];
+        }
+
+        return grey[500];
+    }
+
     public render() {
         const javaCode = `public static void main(String[] args) {
     // your code 
@@ -48,20 +62,20 @@ public class Hello {
 
         return (
             <div>
-                <Paper>
-                    <Tabs
-                        value={this.state.value}
-                        indicatorColor="primary"
-                        textColor="primary">
-                        <Tab label="Kursy"/>
-                        <Tab label="Profil"/>
-                        <Tab label="Wyloguj"/>
-                    </Tabs>
-                </Paper>
-                <br/>
+                <AppBar position="static">
+                    <Toolbar>
+                        {/*<IconButton color="inherit" aria-label="Menu">*/}
+                            {/*<MenuIcon />*/}
+                        {/*</IconButton>*/}
+                        <Typography variant="title" color="inherit" >
+                            {'{ }'} Code masters
+                        </Typography>
+                        <Button color="inherit">Login</Button>
+                    </Toolbar>
+                </AppBar>
                 <Grid container={true} spacing={24} style={{padding: '15px'}}>
                     <Grid item={true} xs={12} sm={6}>
-                        <Paper style={{padding: '15px'}}>
+                        <div style={{padding: '15px', lineHeight: '2em'}}>
                             <Typography variant="display1" gutterBottom={true}>
                                 Metoda main
                             </Typography>
@@ -79,7 +93,7 @@ public class Hello {
                             Uruchamiając
                             aplikację podajemy nazwę klasy której metoda main(…) ma być uruchomiona. Od metody main(…)
                             tej
-                            właśnie klasy rozpoczyna się wykonywanie kodu naszego programu.<br/>
+                            właśnie klasy rozpoczyna się wykonywanie kodu naszego programu.<br/><br/>
 
                             <Typography variant="headline" gutterBottom={true}>
                                 Do zrobienia:
@@ -88,36 +102,32 @@ public class Hello {
                             <List>
                                 {[0, 1, 2, 3].map(value => (
                                     <ListItem key={value} dense={true} button={true}>
-                                        <Checkbox/>
+                                        <Checkbox disabled={true} checked={value === 0}
+                                                  style={{color: this.getCheckboxColor(value)}}/>
                                         <ListItemText primary={`Line item ${value + 1}`}/>
                                     </ListItem>
                                 ))}
                             </List>
-
-                            <p className="valign-wrapper"><i className="material-icons">check</i>&nbsp;Uruchom kod</p>
-                            <p className="valign-wrapper"><i className="material-icons">close</i>&nbsp;Napisz metodę
-                                main
-                            </p>
-                        </Paper>
+                        </div>
                     </Grid>
                     <Grid item={true} xs={12} sm={6}>
                         <div className="col s6">
-                            <Paper>
+                            <div>
+                                <Button color="primary">
+                                    <Icon>play_arrow</Icon> Uruchom
+                                </Button>
                                 <MonacoEditor
                                     width="100%"
                                     height="800"
                                     language="java"
-                                    theme="vs-dark"
+                                    theme="vs-light"
                                     value={this.code}
                                     editorDidMount={this.editorDidMount}
                                     options={this.options}
                                 />
-                            </Paper>
+                            </div>
 
                         </div>
-                        <Button color="primary">
-                            Uruchom
-                        </Button>
                     </Grid>
                 </Grid>
             </div>
