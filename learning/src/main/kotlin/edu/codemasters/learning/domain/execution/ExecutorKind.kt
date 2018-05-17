@@ -1,4 +1,4 @@
-package edu.codemasters.learning.domain
+package edu.codemasters.learning.domain.execution
 
 enum class ExecutorKind {
     JAVA,

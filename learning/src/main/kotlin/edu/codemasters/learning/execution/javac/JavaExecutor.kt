@@ -1,7 +1,7 @@
 package edu.codemasters.learning.execution.javac
 
-import edu.codemasters.learning.domain.ExecutionResult
-import edu.codemasters.learning.execution.Executor
+import edu.codemasters.learning.domain.execution.ExecutionResult
+import edu.codemasters.learning.domain.execution.Executor
 
 class JavaExecutor : Executor {
 

@@ -6,5 +6,4 @@ data class Exercise(
         val initialCode: String,
         val correctAnswer: String,
         val validationExpression: String,
-        val executionPoint: String = "") {
-}
+        val executionPoint: String = "")
