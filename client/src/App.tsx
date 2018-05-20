@@ -15,14 +15,16 @@ import red from '@material-ui/core/colors/red';
 import grey from '@material-ui/core/colors/grey';
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
+import LinearProgress from "@material-ui/core/LinearProgress";
 import ICodeEditor = monaco.editor.ICodeEditor;
 
 class App extends React.Component {
-    public code = `
+    public code = `import java.util.List;
+    
 public class Hello {
-     public static void main(String[] args) {
+   public static void main(String[] args) {
      
-     }
+   }
 }    
     `;
 
@@ -34,6 +36,8 @@ public class Hello {
     };
 
     public state = {
+        buffer: 10,
+        completed: 40,
         value: 0,
     };
 
@@ -64,16 +68,23 @@ public class Hello {
             <div>
                 <AppBar position="static">
                     <Toolbar>
-                        {/*<IconButton color="inherit" aria-label="Menu">*/}
-                            {/*<MenuIcon />*/}
-                        {/*</IconButton>*/}
-                        <Typography variant="title" color="inherit" >
+
+                        <Typography variant="title" style={{flex: '1'}} color="inherit">
                             {'{ }'} Code masters
                         </Typography>
                         <Button color="inherit">Login</Button>
                     </Toolbar>
                 </AppBar>
-                <Grid container={true} spacing={24} style={{padding: '15px'}}>
+                <Grid container={true} spacing={24} style={{padding: '15px', 'width': '100%'}}>
+
+                    <Grid item={true} xs={12} sm={12}>
+                        <LinearProgress variant="determinate" value={this.state.completed}/>
+                    </Grid>
+
+                    <Grid item={true} xs={12} sm={12} text-align="right" style={{'textAlign': 'right'}}>
+                        Lekcja 5 z 12
+                    </Grid>
+
                     <Grid item={true} xs={12} sm={6}>
                         <div style={{padding: '15px', lineHeight: '2em'}}>
                             <Typography variant="display1" gutterBottom={true}>
@@ -105,6 +116,7 @@ public class Hello {
                                         <Checkbox disabled={true} checked={value === 0}
                                                   style={{color: this.getCheckboxColor(value)}}/>
                                         <ListItemText primary={`Line item ${value + 1}`}/>
+                                        <Icon>help</Icon>
                                     </ListItem>
                                 ))}
                             </List>
@@ -113,23 +125,51 @@ public class Hello {
                     <Grid item={true} xs={12} sm={6}>
                         <div className="col s6">
                             <div>
-                                <Button color="primary">
-                                    <Icon>play_arrow</Icon> Uruchom
-                                </Button>
+                                <Grid item={true} xs={12} sm={12} text-align="right" style={{'textAlign': 'right'}}>
+                                    <Button color="primary">
+                                        <Icon>play_arrow</Icon> Uruchom
+                                    </Button>
+                                </Grid>
+
                                 <MonacoEditor
                                     width="100%"
-                                    height="800"
+                                    height="500"
                                     language="java"
                                     theme="vs-light"
                                     value={this.code}
                                     editorDidMount={this.editorDidMount}
                                     options={this.options}
                                 />
+
+                                <Grid item={true} xs={12} sm={12} text-align="right">
+                                    <Typography variant="body2" gutterBottom={true}>
+                                        Error
+                                    </Typography>
+                                </Grid>
+
+                                <Grid item={true} xs={12} sm={12} text-align="right">
+                                    <Typography variant="body1" gutterBottom={true} style={{color: red[500]}}>
+                                        java.lang.NullPointerException
+                                        at com.company...nonNull(ArgumentChecker.java:67)
+                                        at com.company...wrap(CheckArgumentsAspect.java:82)
+                                        at com.company.product.MyTest.test(MyTest.java:37)
+                                    </Typography>
+                                </Grid>
+
+
                             </div>
 
                         </div>
                     </Grid>
+
+                    <Grid item={true} xs={12} sm={12} text-align="right" style={{'textAlign': 'right'}}>
+                        <Button color="primary" disabled={true}>
+                            <Icon>navigate_next</Icon> Dalej
+                        </Button>
+                    </Grid>
                 </Grid>
+
+
             </div>
         );
     }
