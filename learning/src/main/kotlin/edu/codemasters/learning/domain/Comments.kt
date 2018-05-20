@@ -5,5 +5,6 @@ import java.time.LocalDateTime
 data class Comments(
         val userId: String,
         val content: String,
-        val postDate: LocalDateTime
+        val postDate: LocalDateTime,
+        val banned: Boolean
 )

@@ -1,6 +1,6 @@
 package edu.codemasters.learning.domain.execution
 
-enum class ExecutorKind {
+enum class ExecutorLanguage {
     JAVA,
     SQL,
     JS,

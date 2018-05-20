@@ -5,6 +5,18 @@ import edu.codemasters.learning.domain.execution.Executor
 
 class JavaExecutor : Executor {
 
+    companion object {
+        enum class Version {
+            JDK8
+        }
+
+        fun ofVersion(javaExecutorVersion: Version): JavaExecutor {
+            return when (javaExecutorVersion) {
+                Version.JDK8 -> JavaExecutor()
+            }
+        }
+    }
+
     override fun execute(code: String, executionPoint: String): ExecutionResult {
         val source = """
                 public class HelloWorld {
