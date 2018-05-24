@@ -13,12 +13,15 @@ import Icon from "@material-ui/core/Icon";
 import green from '@material-ui/core/colors/green';
 import red from '@material-ui/core/colors/red';
 import grey from '@material-ui/core/colors/grey';
-import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import LinearProgress from "@material-ui/core/LinearProgress";
+import AppBar from "@material-ui/core/AppBar/AppBar";
+import Draft, {htmlToDraft} from 'react-wysiwyg-typescript'
 import ICodeEditor = monaco.editor.ICodeEditor;
+import {EditorState} from "draft-js";
 
 class App extends React.Component {
+
     public code = `import java.util.List;
     
 public class Hello {
@@ -38,7 +41,14 @@ public class Hello {
     public state = {
         buffer: 10,
         completed: 40,
+        editorState: htmlToDraft('Your html contents'),
         value: 0,
+    };
+
+    public editState = (newState: EditorState) => {
+        this.setState(state => ({
+            editorState: newState
+        }));
     };
 
     public editorDidMount(editor: ICodeEditor, monacoModule: typeof monaco): void {
@@ -66,13 +76,12 @@ public class Hello {
 
         return (
             <div>
-                <AppBar position="static">
+                <AppBar position="static" color="default">
                     <Toolbar>
-
-                        <Typography variant="title" style={{flex: '1'}} color="inherit">
+                        <Typography variant="title" style={{flex: '1'}} color="primary">
                             {'{ }'} Code masters
                         </Typography>
-                        <Button color="inherit">Login</Button>
+                        <Button color="primary">Login</Button>
                     </Toolbar>
                 </AppBar>
                 <Grid container={true} spacing={24} style={{padding: '15px', 'width': '100%'}}>
@@ -93,23 +102,29 @@ public class Hello {
 
                             Aplikacja zaimplementowana w języku Java to kolekcja klas. Każda z klas zawiera pewne
                             zmienne i
-                            metody. Z pośród tych wszystkich klas i metod jedna klasa i jedna metoda jest szczególna.
+                            metody. Z pośród tych wszystkich klas i metod jedna klasa i jedna metoda jest
+                            szczególna.
                             Jest
-                            to metoda od której wszystko się zaczyna; metoda która wywoływana jest jako pierwsza, gdy
+                            to metoda od której wszystko się zaczyna; metoda która wywoływana jest jako pierwsza,
+                            gdy
                             uruchamiamy program. Metoda ta ma postać:
 
                             <Highlight language="java">{javaCode}</Highlight>
 
                             Metoda ta może być umieszczona w dowolnej klasie a nawet w kilku różnych klasach.
                             Uruchamiając
-                            aplikację podajemy nazwę klasy której metoda main(…) ma być uruchomiona. Od metody main(…)
+                            aplikację podajemy nazwę klasy której metoda main(…) ma być uruchomiona. Od metody
+                            main(…)
                             tej
                             właśnie klasy rozpoczyna się wykonywanie kodu naszego programu.<br/><br/>
 
                             <Typography variant="headline" gutterBottom={true}>
                                 Do zrobienia:
                             </Typography>
-
+                            <Draft
+                                editorState={this.state.editorState}
+                                onEditorStateChange={this.editState}
+                            />
                             <List>
                                 {[0, 1, 2, 3].map(value => (
                                     <ListItem key={value} dense={true} button={true}>
