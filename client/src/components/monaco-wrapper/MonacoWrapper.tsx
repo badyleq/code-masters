@@ -2,27 +2,30 @@ import * as React from 'react';
 import MonacoEditor from 'react-monaco-editor';
 import ICodeEditor = monaco.editor.ICodeEditor;
 
-const code = `import java.util.List;
-    
-public class Hello {
-   public static void main(String[] args) {
-    System.out.println("hello world");
-   }
-}    
-`;
+export default class MonacoWrapper extends React.Component<any, any> {
 
-export default class MonacoWrapper extends React.Component {
+    public state: any = {};
 
-    private options /* IEditorOptions*/ = {
+    /**
+     * Konfiguracja edutora Monaco.
+     * @see{@link monaco.editor.IEditorOptions}
+     */
+    private options = {
         minimap: {
             enabled: false
         },
-        selectOnLineNumbers: true
+        selectOnLineNumbers: true,
+        scrollbar: {}
     };
 
-    public editorDidMount(editor: ICodeEditor, monacoModule: typeof monaco): void {
-        // TODO: podczas unmount komponentu nalezy wywolac removeEventListener z przekazaca funkcja
-        window.addEventListener('resize', () => editor.layout());
+    public editorDidMount: (editor: ICodeEditor) => void = (editor) => {
+        const editorLayoutFn = () => editor.layout();
+        this.setState({remeasureEditorLayout: editorLayoutFn});
+        window.addEventListener('resize', editorLayoutFn);
+    };
+
+    public componentWillUnmount() {
+        window.removeEventListener('resize', this.state.remeasureEditorLayout);
     }
 
     public render() {
@@ -33,7 +36,7 @@ export default class MonacoWrapper extends React.Component {
                     height="500"
                     language="java"
                     theme="vs-light"
-                    value={code}
+                    value={this.props.code}
                     editorDidMount={this.editorDidMount}
                     options={this.options}
                 />
