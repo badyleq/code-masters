@@ -1,48 +1,30 @@
-import MonacoEditor from 'react-monaco-editor';
 import * as React from 'react';
 import './App.css';
-import Highlight from 'react-highlight'
-import Button from "@material-ui/core/Button";
+import Highlight from 'react-highlight';
+import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
-import Typography from "@material-ui/core/Typography";
-import Checkbox from "@material-ui/core/Checkbox";
-import List from "@material-ui/core/List";
-import ListItem from "@material-ui/core/ListItem";
-import ListItemText from "@material-ui/core/ListItemText";
-import Icon from "@material-ui/core/Icon";
+import Typography from '@material-ui/core/Typography';
+import Checkbox from '@material-ui/core/Checkbox';
+import List from '@material-ui/core/List';
+import ListItem from '@material-ui/core/ListItem';
+import ListItemText from '@material-ui/core/ListItemText';
+import Icon from '@material-ui/core/Icon';
 import green from '@material-ui/core/colors/green';
 import red from '@material-ui/core/colors/red';
 import grey from '@material-ui/core/colors/grey';
-import Toolbar from "@material-ui/core/Toolbar";
-import LinearProgress from "@material-ui/core/LinearProgress";
-import AppBar from "@material-ui/core/AppBar/AppBar";
-import Draft, {htmlToDraft} from 'react-wysiwyg-typescript'
-import ICodeEditor = monaco.editor.ICodeEditor;
-import {EditorState} from "draft-js";
+import Toolbar from '@material-ui/core/Toolbar';
+import LinearProgress from '@material-ui/core/LinearProgress';
+import AppBar from '@material-ui/core/AppBar/AppBar';
+import Draft, {htmlToDraft} from 'react-wysiwyg-typescript';
+import {EditorState} from 'draft-js';
+import MonacoWrapper from '../monaco-wrapper/MonacoWrapper';
 
 class App extends React.Component {
-
-    public code = `import java.util.List;
-    
-public class Hello {
-   public static void main(String[] args) {
-     
-   }
-}    
-    `;
-
-    public options /* IEditorOptions*/ = {
-        minimap: {
-            enabled: false
-        },
-        selectOnLineNumbers: true
-    };
-
     public state = {
         buffer: 10,
         completed: 40,
         editorState: htmlToDraft('Your html contents'),
-        value: 0,
+        value: 0
     };
 
     public editState = (newState: EditorState) => {
@@ -50,13 +32,6 @@ public class Hello {
             editorState: newState
         }));
     };
-
-    public editorDidMount(editor: ICodeEditor, monacoModule: typeof monaco): void {
-        // TODO: podczas unmount komponentu nalezy wywolac removeEventListener z przekazaca funkcja
-        window.addEventListener("resize", () => {
-            editor.layout();
-        });
-    }
 
     public getCheckboxColor(value: number) {
         if (value === 0) {
@@ -146,15 +121,7 @@ public class Hello {
                                     </Button>
                                 </Grid>
 
-                                <MonacoEditor
-                                    width="100%"
-                                    height="500"
-                                    language="java"
-                                    theme="vs-light"
-                                    value={this.code}
-                                    editorDidMount={this.editorDidMount}
-                                    options={this.options}
-                                />
+                                <MonacoWrapper/>
 
                                 <Grid item={true} xs={12} sm={12} text-align="right">
                                     <Typography variant="body2" gutterBottom={true}>
