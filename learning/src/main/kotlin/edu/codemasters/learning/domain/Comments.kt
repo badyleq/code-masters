@@ -6,5 +6,6 @@ data class Comments(
         val userId: String,
         val content: String,
         val postDate: LocalDateTime,
-        val banned: Boolean
+        val banned: Boolean,
+        val subDiscussion: Discussion
 )

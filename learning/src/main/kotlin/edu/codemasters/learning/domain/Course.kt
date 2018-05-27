@@ -15,5 +15,5 @@ data class Course(
         val description: String,
         val executorLanguage: ExecutorLanguage,
         val executorVersion: String,
-        val comments: List<Comments>,
+        val discussion: Discussion,
         val exercises: List<Exercise>)
