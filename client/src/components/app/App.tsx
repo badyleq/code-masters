@@ -39,17 +39,17 @@ class App extends React.Component {
 
     public onExecuteCodeBtn = () => {
         this.notificationSystem.addNotification({
-            message: 'Compilation error',
+            message: '',
             autoDismiss: 0,
             level: 'error',
             children: (
                 <Grid item={true} xs={12} sm={12} text-align="right">
-                    <div style={{color: red[500]}}>
+                    <Typography  style={{color: red[500]}}>
                         java.lang.NullPointerException<br/>
                         at com.company...nonNull (ArgumentChecker.java:67)<br/>
                         at com.company...wrap (CheckArgumentsAspect.java:82)<br/>
                         at com.company.product.MyTest.test (MyTest.java:37)
-                    </div>
+                    </Typography>
                 </Grid>
             )
         });
