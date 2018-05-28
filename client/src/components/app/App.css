@@ -1,45 +1,55 @@
 .App {
-  text-align: center;
+    text-align: center;
 }
 
 .App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
+    animation: App-logo-spin infinite 20s linear;
+    height: 80px;
 }
 
 .App-header {
-  background-color: #222;
-  height: 150px;
-  padding: 20px;
-  color: white;
+    background-color: #222;
+    height: 150px;
+    padding: 20px;
+    color: white;
 }
 
 .App-title {
-  font-size: 1.5em;
+    font-size: 1.5em;
 }
 
 .App-intro {
-  font-size: large;
+    font-size: large;
 }
 
 @keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
 }
 
-.editor-container{
-  margin-right: 30px;
+.editor-container {
+    margin-right: 30px;
 }
 
 .editor-row {
-  width: 90vw;
-  margin-top: 2em;
-  margin-left: auto;
-  margin-right: auto;
+    width: 90vw;
+    margin-top: 2em;
+    margin-left: auto;
+    margin-right: auto;
 }
 
-.app-container{
-  width: 95%;
-  margin-left: auto;
-  margin-right: auto;
+.app-container {
+    width: 95%;
+    margin-left: auto;
+    margin-right: auto;
 }
+
+.notifications-tr {
+    /* nadpisanie domyslnej szerokosci powiadomienia. Important poniewaz nadpisuje style inline */
+    width: 400px !important;
+}
+
