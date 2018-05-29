@@ -5,6 +5,7 @@
   "dependencies": {
     "@material-ui/core": "^1.0.0-rc.1",
     "@material-ui/icons": "^1.0.0-rc.0",
+    "@types/react-router-dom": "^4.2.6",
     "autoprefixer": "7.1.6",
     "babel-jest": "^22.1.0",
     "babel-loader": "^7.1.2",
@@ -32,6 +33,7 @@
     "react-highlight": "^0.12.0",
     "react-monaco-editor": "^0.14.1",
     "react-notification-system": "^0.2.17",
+    "react-router-dom": "^4.2.2",
     "react-wysiwyg-typescript": "^1.0.2",
     "resolve": "1.6.0",
     "source-map-loader": "^0.2.1",

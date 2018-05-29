@@ -89,7 +89,6 @@ export class ExerciseContent extends React.Component {
                     </List>
                 </CardContent>
             </Card>
-
         </Grid>);
     }
 }
