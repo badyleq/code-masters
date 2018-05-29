@@ -1,0 +1,9 @@
+swagger: "2.0"
+info:
+  title: learning-services.yaml
+paths:
+  /learnig/example
+    get:
+      description:
+      parameters:
+        - xxx:
