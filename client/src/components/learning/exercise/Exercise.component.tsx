@@ -8,12 +8,12 @@ import LinearProgress from '@material-ui/core/LinearProgress';
 import {htmlToDraft} from 'react-wysiwyg-typescript';
 import {EditorState} from 'draft-js';
 import * as NotificationSystem from 'react-notification-system';
-import MonacoWrapper from "../monaco-wrapper/MonacoWrapper";
-import {ExerciseContent} from "../exercise-content/ExerciseContent";
-import Card from "@material-ui/core/Card/Card";
-import CardContent from "@material-ui/core/CardContent/CardContent";
-import {CodeOutput} from "../exercise-content/CodeOutput";
-import CircularProgress from "@material-ui/core/CircularProgress/CircularProgress";
+import MonacoWrapper from './monaco-wrapper/MonacoWrapper.component';
+import {ExerciseContent} from './exercise-content/ExerciseContent.component';
+import Card from '@material-ui/core/Card/Card';
+import CardContent from '@material-ui/core/CardContent/CardContent';
+import {CodeOutput} from './code-output/CodeOutput.component';
+import CircularProgress from '@material-ui/core/CircularProgress/CircularProgress';
 
 const code = `import java.util.List;
     
@@ -23,7 +23,7 @@ public class Hello {
    }
 }`;
 
-export class ExerciseSection extends React.Component {
+export class Exercise extends React.Component {
     public notificationSystem: NotificationSystem.System;
 
     public state = {

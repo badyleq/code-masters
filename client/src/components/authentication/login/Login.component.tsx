@@ -2,7 +2,7 @@ import * as React from 'react';
 import Card from '@material-ui/core/es/Card';
 import CardContent from '@material-ui/core/es/CardContent';
 
-export class LoginSection extends React.Component {
+export class Login extends React.Component {
 
     public render() {
         return (

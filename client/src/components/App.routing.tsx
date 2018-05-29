@@ -1,8 +1,8 @@
 import * as React from 'react';
-import {LoginSection} from "../login/login-section/LoginSection";
-import {ExerciseSection} from "../course/exercise-section/ExerciseSection";
+import {Login} from "./authentication/login/Login.component";
+import {Exercise} from "./learning/exercise/Exercise.component";
 import {Route, Switch} from 'react-router-dom';
-import AppDashboard from '../app-dashboard/AppDashboard';
+import AppDashboard from './dashboard/Dashboard.component';
 
 export class AppRouting extends React.Component {
 
@@ -10,8 +10,8 @@ export class AppRouting extends React.Component {
         return (
             <main>
                 <Switch>
-                    <Route path="/" exact={true} component={ExerciseSection}/>
-                    <Route path="/login" component={LoginSection}/>
+                    <Route path="/" exact={true} component={Exercise}/>
+                    <Route path="/login" component={Login}/>
                     <Route path="/dashboard" component={AppDashboard}/>
                 </Switch>
             </main>

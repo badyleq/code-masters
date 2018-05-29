@@ -6,7 +6,7 @@ import Typography from '@material-ui/core/Typography/Typography';
 import {Link} from 'react-router-dom';
 import Toolbar from '@material-ui/core/Toolbar/Toolbar';
 
-export default class AppToolbar extends React.Component {
+export default class TopMenu extends React.Component {
     public render(): ReactNode {
         return (
             <AppBar position="static" style={{backgroundColor: 'white'}}>
@@ -14,7 +14,7 @@ export default class AppToolbar extends React.Component {
                     <Typography variant="title" style={{flex: '1', alignItems: 'center'}}>
 
                         <span className="fontHallelujah rowCentered" style={{fontSize: '1.2em'}}>
-                             <img src="master-of-ceremonies.svg" height="45px"/>
+                             <img src="images/master-of-ceremonies.svg" height="45px"/>
                            &nbsp;Code masters
                         </span>
                     </Typography>

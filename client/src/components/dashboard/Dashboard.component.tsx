@@ -7,7 +7,7 @@ import ExpansionPanelDetails from '@material-ui/core/es/ExpansionPanelDetails';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import Grid from '@material-ui/core/es/Grid';
 
-export default class AppDashboard extends React.Component {
+export default class Dashboard extends React.Component {
     public render(): ReactNode {
         return (
             <div className="app-container">
