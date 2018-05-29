@@ -13,6 +13,7 @@ import {ExerciseContent} from "../exercise-content/ExerciseContent";
 import Card from "@material-ui/core/Card/Card";
 import CardContent from "@material-ui/core/CardContent/CardContent";
 import {CodeOutput} from "../exercise-content/CodeOutput";
+import CircularProgress from "@material-ui/core/CircularProgress/CircularProgress";
 
 const code = `import java.util.List;
     
@@ -39,19 +40,38 @@ export class ExerciseSection extends React.Component {
     };
 
     public onExecuteCodeBtn = () => {
+        const showCompilationError = () => {
+            this.notificationSystem.addNotification({
+                message: '',
+                autoDismiss: 0,
+                level: 'error',
+                children: (
+                    <Grid item={true} xs={12} sm={12} text-align="right">
+                        <Typography style={{color: red[500]}}>
+                            java.lang.NullPointerException<br/>
+                            at com.company...nonNull (ArgumentChecker.java:67)<br/>
+                            at com.company...wrap (CheckArgumentsAspect.java:82)<br/>
+                            at com.company.product.MyTest.test (MyTest.java:37)
+                        </Typography>
+                    </Grid>
+                )
+            })
+        };
+
         this.notificationSystem.addNotification({
             message: '',
-            autoDismiss: 0,
-            level: 'error',
+            level: 'info',
+            onRemove: showCompilationError,
             children: (
-                <Grid item={true} xs={12} sm={12} text-align="right">
-                    <Typography style={{color: red[500]}}>
-                        java.lang.NullPointerException<br/>
-                        at com.company...nonNull (ArgumentChecker.java:67)<br/>
-                        at com.company...wrap (CheckArgumentsAspect.java:82)<br/>
-                        at com.company.product.MyTest.test (MyTest.java:37)
-                    </Typography>
+                <Grid container={true} spacing={24}>
+                    <Grid item={true} sm={2}>
+                        <CircularProgress/>
+                    </Grid>
+                    <Grid item={true} sm={6}>
+                        <h3>Kompilacja</h3>
+                    </Grid>
                 </Grid>
+
             )
         });
     };

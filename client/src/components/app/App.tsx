@@ -1,17 +1,18 @@
 import * as React from 'react';
 import './App.css';
-import {RoutingContent} from "../routing/RoutingContent";
+import {AppRouting} from "./App.routing";
+import {BrowserRouter} from "react-router-dom";
+import AppToolbar from "../app-toolbar/AppToolbar";
 
-
-class App extends React.Component {
-
+export default class App extends React.Component {
     public render() {
         return (
-            <div>
-                <RoutingContent/>
-            </div>
+            <BrowserRouter>
+                <div>
+                    <AppToolbar/>
+                    <AppRouting/>
+                </div>
+            </BrowserRouter>
         );
     }
 }
-
-export default App;
