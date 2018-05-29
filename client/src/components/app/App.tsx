@@ -12,6 +12,9 @@ import MonacoWrapper from '../course/monaco-wrapper/MonacoWrapper';
 import AppToolbar from '../main-app-toolbar/MainAppToolbar';
 import {ExerciseContent} from '../course/exercise-content/ExerciseContent';
 import * as NotificationSystem from 'react-notification-system';
+import {CodeOutput} from "../course/exercise-content/CodeOutput";
+import Card from "@material-ui/core/Card/Card";
+import CardContent from "@material-ui/core/CardContent/CardContent";
 
 const code = `import java.util.List;
     
@@ -44,7 +47,7 @@ class App extends React.Component {
             level: 'error',
             children: (
                 <Grid item={true} xs={12} sm={12} text-align="right">
-                    <Typography  style={{color: red[500]}}>
+                    <Typography style={{color: red[500]}}>
                         java.lang.NullPointerException<br/>
                         at com.company...nonNull (ArgumentChecker.java:67)<br/>
                         at com.company...wrap (CheckArgumentsAspect.java:82)<br/>
@@ -75,26 +78,27 @@ class App extends React.Component {
 
                         <Grid item={true} xs={12} sm={6}>
                             <div className="col s6">
-                                <div style={{backgroundColor: '#ffffff'}}>
-                                    <Grid item={true} xs={12} sm={12} text-align="right" style={{'textAlign': 'right'}}>
-                                        <Button color="primary" onClick={this.onExecuteCodeBtn}>
-                                            <Icon>play_arrow</Icon> Uruchom
-                                        </Button>
-                                    </Grid>
 
-                                    <MonacoWrapper code={code}/>
+                                <Card>
+                                    <CardContent style={{padding: 0}}>
+                                        <Grid style={{backgroundColor: '#ffffff', textAlign: 'right'}}
+                                              item={true} xs={12} sm={12} text-align="right">
+                                            <Button color="primary" onClick={this.onExecuteCodeBtn}>
+                                                <Icon>play_arrow</Icon> Uruchom
+                                            </Button>
+                                        </Grid>
 
-                                    <NotificationSystem
-                                        ref={(ref: NotificationSystem.System) => this.notificationSystem = ref}/>
+                                        <MonacoWrapper style={{backgroundColor: '#ffffff'}} code={code}/>
+                                    </CardContent>
+                                </Card>
 
-                                    <Grid item={true} xs={12} sm={12} text-align="right">
-                                        <Typography variant="body2" gutterBottom={true}>
-                                            Error
-                                        </Typography>
-                                    </Grid>
+                                <NotificationSystem
+                                    ref={(ref: NotificationSystem.System) => this.notificationSystem = ref}/>
 
-
-                                </div>
+                                <Grid style={{backgroundColor: '#ffffff'}} item={true} xs={12} sm={12}
+                                      text-align="right">
+                                    <CodeOutput/>
+                                </Grid>
                             </div>
                         </Grid>
 
