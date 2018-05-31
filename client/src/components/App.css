@@ -63,3 +63,21 @@
     justify-content: left;
     align-items: center;
 }
+
+.light-font {
+    color: #f3f3f3 !important;
+}
+
+.dark-background {
+    background-color: #333333 !important;
+}
+
+#fullscreen-modal {
+    width: 96vw;
+    margin: 2vh 2vw 2vh 2vh;
+    height: 96vh;
+}
+
+#fullscreen-modal div {
+    width: 100%;
+}

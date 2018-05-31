@@ -15,7 +15,7 @@ export default class TopMenu extends React.Component {
 
                         <span className="fontHallelujah rowCentered" style={{fontSize: '1.2em'}}>
                              <img src="images/master-of-ceremonies.svg" height="45px"/>
-                           &nbsp;Code masters
+                            &nbsp;Code masters
                         </span>
                     </Typography>
 

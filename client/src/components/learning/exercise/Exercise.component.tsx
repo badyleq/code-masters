@@ -12,7 +12,7 @@ import MonacoWrapper from './monaco-wrapper/MonacoWrapper.component';
 import {ExerciseContent} from './exercise-content/ExerciseContent.component';
 import Card from '@material-ui/core/Card/Card';
 import CardContent from '@material-ui/core/CardContent/CardContent';
-import {CodeOutput} from './code-output/CodeOutput.component';
+import CodeOutput from './code-output/CodeOutput.component';
 import CircularProgress from '@material-ui/core/CircularProgress/CircularProgress';
 
 const code = `import java.util.List;
@@ -44,7 +44,7 @@ export class Exercise extends React.Component {
             this.notificationSystem.addNotification({
                 message: '',
                 autoDismiss: 0,
-                level: 'error',
+                level: 'success',
                 children: (
                     <Grid item={true} xs={12} sm={12} text-align="right">
                         <Typography style={{color: red[500]}}>
@@ -61,6 +61,7 @@ export class Exercise extends React.Component {
         this.notificationSystem.addNotification({
             message: '',
             level: 'info',
+            autoDismiss: 1,
             onRemove: showCompilationError,
             children: (
                 <Grid container={true} spacing={24}>
