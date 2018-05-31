@@ -1,8 +1,8 @@
-import * as React from 'react';
-import './App.css';
-import {AppRouting} from './App.routing';
-import {BrowserRouter} from 'react-router-dom';
-import TopMenu from './top-menu/TopMenu.component';
+import * as React from "react";
+import "./App.css";
+import {AppRouting} from "./App.routing";
+import {BrowserRouter} from "react-router-dom";
+import TopMenu from "./common/top-menu/TopMenu.component";
 import MuiThemeProvider from "@material-ui/core/styles/MuiThemeProvider";
 import {codeMastersUITheme} from "./App.theme";
 

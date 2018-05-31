@@ -1,6 +1,6 @@
-import * as React from 'react';
-import {RefObject} from 'react';
-import {red} from "@material-ui/core/colors";
+import * as React from "react";
+import {RefObject} from "react";
+import {green} from "@material-ui/core/colors";
 import {Color} from "@material-ui/core";
 import ExecutionResultModal from "./ExecutionResultModal.component";
 import CardHeader from "@material-ui/core/es/CardHeader";
@@ -10,11 +10,12 @@ import Icon from "@material-ui/core/Icon/Icon";
 import CardContent from "@material-ui/core/CardContent/CardContent";
 import Typography from "@material-ui/core/Typography/Typography";
 import IconButton from "@material-ui/core/IconButton/IconButton";
-import Fade from '@material-ui/core/Fade';
+import Fade from "@material-ui/core/Fade";
+import {codeMastersUITheme} from "../../../App.theme";
 
-export default class ExecutionResult extends React.Component {
+export default class ExecutionResult extends React.Component<any, any> {
     public executionResultModalRef: RefObject<ExecutionResultModal>;
-    public color: Color = red;
+    public color: Color = green;
     public state = {
         showResult: false
     };
@@ -38,33 +39,34 @@ export default class ExecutionResult extends React.Component {
         this.setState({showResult: false});
     };
 
+    public noop() {
+        alert();
+    }
+
     public render() {
         return (
             <Fade in={this.state.showResult}>
-                <Card style={{width: '100%', marginTop: '1em'}}>
+                <Card style={{width: "100%", height: "100%", minHeight: "50px"}}>
                     <CardHeader style={{
-                        backgroundColor: this.color[ColorWeight.TOOLBAR_BORDER],
+                        backgroundColor: codeMastersUITheme.primary,
                         color: this.color[ColorWeight.FONT],
-                        paddingTop: '10px',
-                        paddingBottom: '10px',
-                        fontSize: '1.0em'
+                        paddingTop: "2px",
+                        paddingBottom: "2px",
+                        lineHeight: "1em",
                     }}
-                                title={<div style={{color: 'white'}}> Execution result </div>}
+                                title={<div style={{color: "white", fontSize: "0.8em"}}> Execution result </div>}
                                 action={
                                     <div>
                                         <IconButton>
-                                            <Icon style={{color: 'white'}} onClick={this.handleOpen}>fullscreen</Icon>
-                                        </IconButton>
-                                        <IconButton>
-                                            <Icon style={{color: 'white'}} onClick={this.handleHideResult}>close</Icon>
+                                            <Icon style={{color: "white"}} onClick={this.handleOpen}>fullscreen</Icon>
                                         </IconButton>
                                     </div>
                                 }/>
 
-                    <CardContent style={{backgroundColor: this.color[ColorWeight.BACKGROUND]}}>
+                    <CardContent id="executionResult">
                         <Typography variant="body2" gutterBottom={true} style={{
                             color: this.color[ColorWeight.FONT],
-                            fontSize: '1.0em'
+                            fontSize: "1.0em"
                         }}>
                             > hello world
                         </Typography>

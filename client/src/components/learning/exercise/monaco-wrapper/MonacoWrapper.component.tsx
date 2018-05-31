@@ -1,10 +1,20 @@
-import * as React from 'react';
-import MonacoEditor from 'react-monaco-editor';
+import * as React from "react";
+import MonacoEditor from "react-monaco-editor";
 import ICodeEditor = monaco.editor.ICodeEditor;
 
-export default class MonacoWrapper extends React.Component<any, any> {
+interface IMonacoWrapperState {
+    editor: ICodeEditor | null,
+    remeasureEditorLayout: () => void | null,
+    editorHeight: number
+}
 
-    public state: any = {};
+export default class MonacoWrapper extends React.Component<any, IMonacoWrapperState> {
+
+    public state: any = {
+        editor: null,
+        remeasureEditorLayout: null,
+        editorHeight: 500
+    };
 
     /**
      * Konfiguracja edutora Monaco.
@@ -20,20 +30,36 @@ export default class MonacoWrapper extends React.Component<any, any> {
 
     public editorDidMount: (editor: ICodeEditor) => void = (editor) => {
         const editorLayoutFn = () => editor.layout();
-        this.setState({remeasureEditorLayout: editorLayoutFn});
-        window.addEventListener('resize', editorLayoutFn);
+        this.setState({
+            remeasureEditorLayout: editorLayoutFn,
+            editor
+        });
+        window.addEventListener("resize", editorLayoutFn);
     };
 
+    public reRenderEditor() {
+        if (this.state.editor) {
+            this.state.editor.layout();
+        }
+    }
+
     public componentWillUnmount() {
-        window.removeEventListener('resize', this.state.remeasureEditorLayout);
+        window.removeEventListener("resize", this.state.remeasureEditorLayout);
+    }
+
+    public componentDidMount() {
+        const wrapper = document.getElementById("monacoEditorWrapper");
+        if (wrapper) {
+            this.setState({editorHeight: wrapper.clientHeight});
+        }
     }
 
     public render() {
         return (
-            <div>
+            <div id="monacoEditorWrapper" style={{height: "calc(70vh)"}}>
                 <MonacoEditor
                     width="100%"
-                    height="500"
+                    height={this.state.editorHeight}
                     language="java"
                     theme="vs-light"
                     value={this.props.code}

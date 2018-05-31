@@ -24,7 +24,7 @@ export default class CourseCreator extends React.Component {
 
     public render() {
         return (
-            <div className="app-container">
+            <div className="app-container" style={{backgroundColor: '#f3f3f3'}}>
                 <Card>
                     <CardContent>
                         <Grid container={true} spacing={24}>
