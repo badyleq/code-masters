@@ -7,8 +7,6 @@ import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
 import Icon from '@material-ui/core/Icon';
-import Draft, {htmlToDraft} from 'react-wysiwyg-typescript';
-import {EditorState} from 'draft-js';
 import red from '@material-ui/core/colors/red';
 import green from '@material-ui/core/colors/green';
 import grey from '@material-ui/core/colors/grey';
@@ -20,18 +18,6 @@ const javaCode = `public static void main(String[] args) {
 }`;
 
 export class ExerciseContent extends React.Component {
-    public state = {
-        buffer: 10,
-        completed: 40,
-        editorState: htmlToDraft('Your html contents'),
-        value: 0
-    };
-
-    public editState = (newState: EditorState) => {
-        this.setState(state => ({
-            editorState: newState
-        }));
-    };
 
     public getCheckboxColor(value: number) {
         if (value === 0) {
@@ -48,9 +34,7 @@ export class ExerciseContent extends React.Component {
         return (<Grid item={true} xs={12} sm={6}>
             <Card>
                 <CardContent style={{lineHeight: '1.5em'}}>
-                    <Typography variant="display1" gutterBottom={true}>
-                        Metoda main
-                    </Typography>
+                    <Typography variant="display1" gutterBottom={true}> Metoda main </Typography>
 
                     Aplikacja zaimplementowana w języku Java to kolekcja klas. Każda z klas zawiera pewne
                     zmienne i
@@ -70,13 +54,8 @@ export class ExerciseContent extends React.Component {
                     tej
                     właśnie klasy rozpoczyna się wykonywanie kodu naszego programu.<br/><br/>
 
-                    <Typography variant="headline" gutterBottom={true}>
-                        Do zrobienia:
-                    </Typography>
-                    <Draft
-                        editorState={this.state.editorState}
-                        onEditorStateChange={this.editState}
-                    />
+                    <Typography variant="headline" gutterBottom={true}> Do zrobienia: </Typography>
+
                     <List>
                         {[0, 1, 2, 3].map(value => (
                             <ListItem key={value} dense={true} button={true}>

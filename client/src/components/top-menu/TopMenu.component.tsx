@@ -19,6 +19,9 @@ export default class TopMenu extends React.Component {
                         </span>
                     </Typography>
 
+                    <Link to="/course-creator" style={{textDecoration: 'none'}}>
+                        <Button>create course</Button>
+                    </Link>
                     <Link to="/" style={{textDecoration: 'none'}}>
                         <Button color="primary">Exercise</Button>
                     </Link>
@@ -26,9 +29,7 @@ export default class TopMenu extends React.Component {
                         <Button color="primary">Login</Button>
                     </Link>
                     <Link to="/dashboard" style={{textDecoration: 'none'}}>
-                        <Button variant="outlined">
-                            dashboard
-                        </Button>
+                        <Button variant="outlined">Dashboard</Button>
                     </Link>
                 </Toolbar>
             </AppBar>

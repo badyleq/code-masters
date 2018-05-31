@@ -9,9 +9,9 @@ import AppBar from "@material-ui/core/AppBar/AppBar";
 import Dialog from "@material-ui/core/Dialog/Dialog";
 import Toolbar from "@material-ui/core/Toolbar/Toolbar";
 import {green, red} from "@material-ui/core/colors";
-import {codeMastersUITheme} from "../../App.theme";
 import {Color} from "@material-ui/core";
 import {ColorWeight, ExecutionStatus} from "./ExecutionResult";
+import {codeMastersUITheme} from "../../../App.theme";
 
 function Transition(props: any) {
     return <Slide direction="up" {...props} />;
