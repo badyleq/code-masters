@@ -53,11 +53,11 @@ export default class ExecutionResultModal extends React.Component<IExecutionResu
                 <AppBar style={{textAlign: 'right', backgroundColor: this.color[ColorWeight.TOOLBAR_BORDER]}}>
                     <Toolbar style={{backgroundColor: this.color[ColorWeight.TOOLBAR_BORDER]}}>
                         <Typography variant="title"
-                                    style={{color: codeMastersUITheme.light, textAlign: 'left', flex: 1}}>
+                                    style={{color: codeMastersUITheme.font, textAlign: 'left', flex: 1}}>
                             Code result
                         </Typography>
                         <IconButton onClick={this.handleClose}>
-                            <Icon style={{color: 'white'}}>close</Icon>
+                            <Icon style={{color: codeMastersUITheme.font,}}>close</Icon>
                         </IconButton>
                     </Toolbar>
                 </AppBar>

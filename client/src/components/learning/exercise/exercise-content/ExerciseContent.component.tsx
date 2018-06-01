@@ -12,7 +12,6 @@ import green from "@material-ui/core/colors/green";
 import grey from "@material-ui/core/colors/grey";
 import Card from "@material-ui/core/Card/Card";
 import CardContent from "@material-ui/core/CardContent/CardContent";
-import IconButton from "@material-ui/core/IconButton/IconButton";
 import {codeMastersUITheme} from "../../../App.theme";
 import Scrollbars from "react-custom-scrollbars";
 
@@ -34,13 +33,15 @@ export class ExerciseContent extends React.Component {
     }
 
     public render() {
-        return (<Card style={{lineHeight: "1.5em", height: "calc(100%)"}}>
+        return (<Card style={{
+            lineHeight: "1.5em",
+            height: "calc(100%)",
+            backgroundColor: codeMastersUITheme.background,
+            color: codeMastersUITheme.font
+        }}>
             <CardContent style={{lineHeight: "1.5em"}} id="exerciseContent">
                 <Grid container={true} spacing={16}>
                     <Grid item={true} xs={12} sm={12}>
-                        <IconButton>
-                            <Icon style={{color: codeMastersUITheme.primary}}>chat_bubble_outline</Icon>
-                        </IconButton>
                         Lesson 6/12
                     </Grid>
                     <Grid item={true} sm={10}>

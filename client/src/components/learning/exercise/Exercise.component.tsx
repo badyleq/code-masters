@@ -4,7 +4,6 @@ import Grid from "@material-ui/core/Grid";
 import {htmlToDraft} from "react-wysiwyg-typescript";
 import * as NotificationSystem from "react-notification-system";
 import CircularProgress from "@material-ui/core/CircularProgress/CircularProgress";
-import ExecutionResult from "./execution-result/ExecutionResult.component";
 import SplitPane from "react-split-pane";
 import LinearProgress from "@material-ui/core/LinearProgress/LinearProgress";
 import {ExerciseContent} from "./exercise-content/ExerciseContent.component";
@@ -13,6 +12,8 @@ import Card from "@material-ui/core/Card/Card";
 import CardContent from "@material-ui/core/CardContent/CardContent";
 import Button from "@material-ui/core/Button/Button";
 import Icon from "@material-ui/core/Icon/Icon";
+import ExerciseBottomPanel from "./execution-result/ExerciseBottomPanel";
+import {codeMastersUITheme} from "../../App.theme";
 
 const code = `import java.util.List;
 
@@ -24,7 +25,7 @@ public class Hello {
 
 export class Exercise extends React.Component {
     public notificationSystem: NotificationSystem.System;
-    public executionResultRef: RefObject<ExecutionResult> = React.createRef();
+    public executionResultRef: RefObject<ExerciseBottomPanel> = React.createRef();
     public monacoWrapperRef: RefObject<MonacoWrapper> = React.createRef();
 
     public state = {
@@ -64,12 +65,13 @@ export class Exercise extends React.Component {
     }
 
     public render() {
-        return (<div style={{backgroundColor: "white"}}>
+        return (<div style={{backgroundColor: codeMastersUITheme.background}}>
             <Grid item={true} xs={12} sm={12}>
                 <LinearProgress variant="determinate" value={this.state.completed}/>
             </Grid>
 
-            <SplitPane split="horizontal" size={"calc(100vh - 200px)"} minSize={400} onChange={this.onResizeHorizontal} style={{marginTop: "4.5em"}}>
+            <SplitPane split="horizontal" size={"calc(100vh - 300px)"} minSize={200} onChange={this.onResizeHorizontal}
+                       style={{marginTop: "4.3em"}}>
                 <SplitPane split="vertical"
                            minSize={400}
                            defaultSize={"calc(50%)"}
@@ -77,8 +79,8 @@ export class Exercise extends React.Component {
                            onChange={this.onResize}>
                     <ExerciseContent/>
                     <Card style={{lineHeight: "1.5em", height: "calc(100%)", minWidth: "300px", minHeight: "100px"}}>
-                        <CardContent style={{lineHeight: "1.5em"}}>
-                            <Grid style={{backgroundColor: "#ffffff", textAlign: "right"}}
+                        <CardContent style={{lineHeight: "1.5em", backgroundColor: codeMastersUITheme.background}}>
+                            <Grid style={{backgroundColor: codeMastersUITheme.background, textAlign: "right"}}
                                   item={true} xs={12} sm={12} text-align="right">
                                 <Button disabled={true} color="primary">
                                     <Icon>navigate_next</Icon> Dalej
@@ -87,11 +89,12 @@ export class Exercise extends React.Component {
                                     <Icon>play_arrow</Icon> Uruchom
                                 </Button>
                             </Grid>
-                            <MonacoWrapper ref={this.monacoWrapperRef} style={{backgroundColor: "#ffffff", width: "100%"}} code={code}/>
+                            <MonacoWrapper ref={this.monacoWrapperRef}
+                                           style={{backgroundColor: codeMastersUITheme.background, width: "100%"}} code={code}/>
                         </CardContent>
                     </Card>
                 </SplitPane>
-                <ExecutionResult ref={this.executionResultRef}/>
+                <ExerciseBottomPanel ref={this.executionResultRef}/>
             </SplitPane>
             <NotificationSystem ref={(ref: NotificationSystem.System) => this.notificationSystem = ref}/>
         </div>);

@@ -1,5 +1,6 @@
 import * as React from "react";
 import MonacoEditor from "react-monaco-editor";
+import {codeMastersUITheme} from "../../../App.theme";
 import ICodeEditor = monaco.editor.ICodeEditor;
 
 interface IMonacoWrapperState {
@@ -61,7 +62,7 @@ export default class MonacoWrapper extends React.Component<any, IMonacoWrapperSt
                     width="100%"
                     height={this.state.editorHeight}
                     language="java"
-                    theme="vs-light"
+                    theme={codeMastersUITheme.editorTheme}
                     value={this.props.code}
                     editorDidMount={this.editorDidMount}
                     options={this.options}

@@ -1,22 +1,20 @@
 import createMuiTheme from "@material-ui/core/styles/createMuiTheme";
-import {blue, grey} from "@material-ui/core/colors";
+import {darkColorTheme, lightColorTheme, primary, secondary} from "./common/AppColors";
+import {ApplicationSettings} from "./common/ApplicationSettings";
 
-const colors = {
-    primary: blue[500],
-    secondary: grey[100],
-    dark: '#333333',
-    light: '#f3f3f3'
-};
+const selectedTheme = ApplicationSettings.useDarkTheme() ? darkColorTheme : lightColorTheme;
 
 export const codeMastersUITheme = {
-    ...colors,
+    ...selectedTheme,
+    primary,
+    secondary,
     theme: createMuiTheme({
         palette: {
             primary: {
-                main: colors.primary
+                main: primary,
             },
             secondary: {
-                main: colors.secondary
+                main: secondary,
             },
         },
     })
