@@ -7,6 +7,8 @@ import TextField from "@material-ui/core/TextField/TextField";
 import Grid from "@material-ui/core/Grid/Grid";
 import Divider from "@material-ui/core/Divider/Divider";
 import Typography from "@material-ui/core/Typography/Typography";
+import Icon from "@material-ui/core/Icon/Icon";
+import IconButton from "@material-ui/core/IconButton/IconButton";
 
 export default class CourseCreator extends React.Component {
     public state = {
@@ -24,7 +26,7 @@ export default class CourseCreator extends React.Component {
 
     public render() {
         return (
-            <div className="app-container" style={{backgroundColor: '#f3f3f3'}}>
+            <div className="app-container" style={{backgroundColor: "#f3f3f3"}}>
                 <Card>
                     <CardContent>
                         <Grid container={true} spacing={24}>
@@ -47,6 +49,33 @@ export default class CourseCreator extends React.Component {
                                     Description
                                 </Typography>
                                 <Draft editorState={this.state.editorState} onEditorStateChange={this.editState}/>
+                            </Grid>
+                        </Grid>
+
+                        <Grid container={true} spacing={24}>
+                            <Grid item={true} sm={12}>
+                                <Typography variant="headline" gutterBottom={true}>
+                                    Exercises
+                                </Typography>
+                            </Grid>
+                            <Grid item={true} sm={3}>
+                                <Card>
+                                    <CardContent>
+                                        exercise 1
+                                    </CardContent>
+                                </Card>
+                            </Grid>
+                            <Grid item={true} sm={3}>
+                                <Card>
+                                    <CardContent>
+                                        exercise 1
+                                    </CardContent>
+                                </Card>
+                            </Grid>
+                            <Grid item={true} sm={3}>
+                                <IconButton>
+                                    <Icon style={{height: "100px"}}>add_box</Icon>
+                                </IconButton>
                             </Grid>
                         </Grid>
                     </CardContent>
