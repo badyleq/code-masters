@@ -1,15 +1,24 @@
+import Logger from "./service/Logger";
+
 enum STORAGE_KEY {
     USE_DARK_THEME = "useDarkTheme"
 }
 
-export class ApplicationSettings {
+class ApplicationSettings {
+    private logger = new Logger(ApplicationSettings);
+    private settingsStorage = localStorage;
 
-    public static useDarkTheme(): boolean {
-        return sessionStorage.getItem(STORAGE_KEY.USE_DARK_THEME) === "true"
+    constructor() {
+        this.logger.log("creating ApplicationSettings")
     }
 
-    public static setUseDarkTheme(useDarkTheme: boolean) {
-        return sessionStorage.setItem(STORAGE_KEY.USE_DARK_THEME, useDarkTheme + "");
+    public useDarkTheme(): boolean {
+        return this.settingsStorage.getItem(STORAGE_KEY.USE_DARK_THEME) === "true"
     }
 
+    public setUseDarkTheme(useDarkTheme: boolean) {
+        return this.settingsStorage.setItem(STORAGE_KEY.USE_DARK_THEME, useDarkTheme + "");
+    }
 }
+
+export const applicationSettings = new ApplicationSettings();

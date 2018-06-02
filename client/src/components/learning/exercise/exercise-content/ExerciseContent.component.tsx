@@ -82,8 +82,6 @@ export class ExerciseContent extends React.Component {
                     </List>
                     <p>&nbsp;</p>
                 </Scrollbars>
-
-
             </CardContent>
         </Card>);
     }

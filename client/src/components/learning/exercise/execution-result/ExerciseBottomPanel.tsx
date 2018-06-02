@@ -16,20 +16,21 @@ import {ColorWeight, ExecutionStatus} from "./ExecutionResult";
 import {codeMastersUITheme} from "../../../App.theme";
 import Switch from "@material-ui/core/Switch/Switch";
 import {darkColorTheme, lightColorTheme} from "../../../common/AppColors";
-import {ApplicationSettings} from "../../../common/ApplicationSettings";
+import {applicationSettings} from "../../../common/ApplicationSettings";
 
 export default class ExerciseBottomPanel extends React.Component<any, any> {
-    public executionResultModalRef: RefObject<ExecutionResultModal>;
-    public color: Color = green;
-    public state = {
-        showResult: false,
-        selectedTab: 0,
-        userDarkTheme: ApplicationSettings.useDarkTheme()
-    };
+    public state: any;
+    private executionResultModalRef: RefObject<ExecutionResultModal> = React.createRef();
+    private color: Color = green;
 
     constructor(props: any) {
         super(props);
-        this.executionResultModalRef = React.createRef();
+
+        this.state = {
+            showResult: false,
+            selectedTab: 0,
+            userDarkTheme: applicationSettings.useDarkTheme()
+        };
     }
 
     public handleOpen = () => {
@@ -87,7 +88,7 @@ export default class ExerciseBottomPanel extends React.Component<any, any> {
                             <ExecutionResultModal status={ExecutionStatus.ERROR} ref={this.executionResultModalRef}/>
                         </div>
 
-                        <div>
+                        <div style={{padding: "20px", backgroundColor: codeMastersUITheme.background}}>
                             bbb
                         </div>
 
@@ -105,7 +106,8 @@ export default class ExerciseBottomPanel extends React.Component<any, any> {
 
     private handleChange = (name: any) => (event: any) => {
         this.setState({[name]: event.target.checked});
-        ApplicationSettings.setUseDarkTheme(event.target.checked);
+
+        applicationSettings.setUseDarkTheme(event.target.checked);
 
         if (event.target.checked) {
             codeMastersUITheme.background = darkColorTheme.background;
