@@ -1,19 +1,13 @@
 import * as React from "react";
 import {RefObject} from "react";
 import Grid from "@material-ui/core/Grid";
-import {htmlToDraft} from "react-wysiwyg-typescript";
-import * as NotificationSystem from "react-notification-system";
-import CircularProgress from "@material-ui/core/CircularProgress/CircularProgress";
 import SplitPane from "react-split-pane";
 import LinearProgress from "@material-ui/core/LinearProgress/LinearProgress";
 import {ExerciseContent} from "./exercise-content/ExerciseContent.component";
 import MonacoWrapper from "./monaco-wrapper/MonacoWrapper.component";
-import Card from "@material-ui/core/Card/Card";
-import CardContent from "@material-ui/core/CardContent/CardContent";
-import Button from "@material-ui/core/Button/Button";
-import Icon from "@material-ui/core/Icon/Icon";
-import ExerciseBottomPanel from "./execution-result/ExerciseBottomPanel";
 import {codeMastersUITheme} from "../../App.theme";
+import "./Exercise.css";
+import BottomPanel from "./bottom-panel/BottomPanel";
 
 const code = `import java.util.List;
 
@@ -24,80 +18,35 @@ public class Hello {
 }`;
 
 export class Exercise extends React.Component {
-    public notificationSystem: NotificationSystem.System;
-    public executionResultRef: RefObject<ExerciseBottomPanel> = React.createRef();
     public monacoWrapperRef: RefObject<MonacoWrapper> = React.createRef();
 
     public state = {
-        buffer: 10,
         completed: 40,
-        editorState: htmlToDraft("Your html contents"),
-        value: 0,
     };
-
-    public onExecuteCodeBtn = () => {
-        this.notificationSystem.addNotification({
-            message: "",
-            level: "info",
-            autoDismiss: 1,
-            onRemove: () => {
-                if (this.executionResultRef.current) {
-                    this.executionResultRef.current.handleShowResult();
-                }
-            },
-            children: (
-                <Grid container={true} spacing={24}>
-                    <Grid item={true} sm={2}>
-                        <CircularProgress/>
-                    </Grid>
-                    <Grid item={true} sm={6}>
-                        <h3>Kompilacja</h3>
-                    </Grid>
-                </Grid>
-            )
-        });
-    };
-
-    public componentDidMount() {
-        if (this.executionResultRef.current) {
-            this.executionResultRef.current.handleShowResult();
-        }
-    }
 
     public render() {
-        return (<div style={{backgroundColor: codeMastersUITheme.background}}>
-            <Grid item={true} xs={12} sm={12}>
-                <LinearProgress variant="determinate" value={this.state.completed}/>
-            </Grid>
+        return (
+            <div style={{backgroundColor: codeMastersUITheme.background}}>
+                <Grid item={true} xs={12} sm={12}>
+                    <LinearProgress variant="determinate" value={this.state.completed}/>
+                </Grid>
 
-            <SplitPane split="horizontal" size={"calc(100vh - 300px)"} minSize={200} onChange={this.onResizeHorizontal}
-                       style={{marginTop: "4.3em"}}>
-                <SplitPane split="vertical"
-                           minSize={400}
-                           defaultSize={"calc(50%)"}
-                           primary="second"
-                           onChange={this.onResize}>
-                    <ExerciseContent/>
-                    <Card style={{lineHeight: "1.5em", height: "calc(100%)", minWidth: "300px", minHeight: "100px"}}>
-                        <CardContent style={{lineHeight: "1.5em", backgroundColor: codeMastersUITheme.background}}>
-                            <Grid style={{backgroundColor: codeMastersUITheme.background, textAlign: "right"}}
-                                  item={true} xs={12} sm={12} text-align="right">
-                                <Button disabled={true} color="primary">
-                                    <Icon>navigate_next</Icon> Dalej
-                                </Button>
-                                <Button color="primary" onClick={this.onExecuteCodeBtn}>
-                                    <Icon>play_arrow</Icon> Uruchom
-                                </Button>
-                            </Grid>
-                            <MonacoWrapper ref={this.monacoWrapperRef}
-                                           style={{backgroundColor: codeMastersUITheme.background, width: "100%"}} code={code}/>
-                        </CardContent>
-                    </Card>
+                <SplitPane split="horizontal" size={"calc(100vh - 300px)"}
+                           minSize={200}
+                           onChange={this.onResizeHorizontal}
+                           style={{marginTop: "4.3em"}}>
+                    <SplitPane split="vertical"
+                               minSize={400}
+                               defaultSize={"calc(50%)"}
+                               primary="second"
+                               onChange={this.onResize}>
+                        <ExerciseContent/>
+                        <MonacoWrapper ref={this.monacoWrapperRef} code={code}/>
+                    </SplitPane>
+                    <BottomPanel/>
                 </SplitPane>
-                <ExerciseBottomPanel ref={this.executionResultRef}/>
-            </SplitPane>
-            <NotificationSystem ref={(ref: NotificationSystem.System) => this.notificationSystem = ref}/>
-        </div>);
+            </div>
+        );
     }
 
     private onResize = () => {
@@ -117,6 +66,4 @@ export class Exercise extends React.Component {
             }
         }
     }
-
-
 }
