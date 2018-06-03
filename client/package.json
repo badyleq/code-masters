@@ -38,6 +38,7 @@
     "react-monaco-editor": "^0.14.1",
     "react-notification-system": "^0.2.17",
     "react-router-dom": "^4.2.2",
+    "react-router-page-transition-v2": "^1.0.0",
     "react-split-pane": "^0.1.77",
     "react-swipeable-views": "^0.12.13",
     "react-wysiwyg-typescript": "^1.0.2",

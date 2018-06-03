@@ -38,7 +38,7 @@ export default class BottomPanel extends React.Component<any, any> {
 
     public render() {
         return (
-            <div>
+            <div style={{borderTop: `1px solid ${codeMastersUITheme.primary}`}}>
                 <AppBar position="static">
                     <Grid container={true} style={{backgroundColor: codeMastersUITheme.background, color: codeMastersUITheme.font}}>
                         <Grid item={true} sm={8}>
@@ -52,6 +52,9 @@ export default class BottomPanel extends React.Component<any, any> {
                             </Tabs>
                         </Grid>
                         <Grid item={true} sm={4} style={{textAlign: "right"}}>
+                            <IconButton>
+                                <Icon style={{color: codeMastersUITheme.font}} onClick={this.minimize}>minimize</Icon>
+                            </IconButton>
                             <IconButton>
                                 <Icon style={{color: codeMastersUITheme.font}} onClick={this.showFullScreen}>fullscreen</Icon>
                             </IconButton>
@@ -70,10 +73,15 @@ export default class BottomPanel extends React.Component<any, any> {
 
     private handleTabChange = (event: React.ChangeEvent<{}>, selectedTab: any) => {
         this.setState({selectedTab});
+        this.props.onMaximize();
     };
 
     private handleChangeIndex = (index: number) => {
         this.setState({selectedTab: index});
+    };
+
+    private minimize = () => {
+        this.props.onMinimize();
     };
 
     private showFullScreen = () => {

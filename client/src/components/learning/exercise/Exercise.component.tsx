@@ -18,11 +18,15 @@ public class Hello {
 }`;
 
 export class Exercise extends React.Component {
-    public monacoWrapperRef: RefObject<MonacoWrapper> = React.createRef();
+    public readonly bottomPanelMinimizedHeight = 115;
+    public readonly bottomPanelMaximizedHeight = 400;
 
     public state = {
         completed: 40,
+        bottomPanelSize: this.bottomPanelMinimizedHeight,
+        minimized: true
     };
+    public monacoWrapperRef: RefObject<MonacoWrapper> = React.createRef();
 
     public render() {
         return (
@@ -31,7 +35,7 @@ export class Exercise extends React.Component {
                     <LinearProgress variant="determinate" value={this.state.completed}/>
                 </Grid>
 
-                <SplitPane split="horizontal" size={"calc(100vh - 300px)"}
+                <SplitPane split="horizontal" size={`calc(100vh - ${this.state.bottomPanelSize}px)`}
                            minSize={200}
                            onChange={this.onResizeHorizontal}
                            style={{marginTop: "4.3em"}}>
@@ -43,11 +47,27 @@ export class Exercise extends React.Component {
                         <ExerciseContent/>
                         <MonacoWrapper ref={this.monacoWrapperRef} code={code}/>
                     </SplitPane>
-                    <BottomPanel/>
+                    <BottomPanel onMinimize={this.onMinimizeBottomPanel} onMaximize={this.onMaximizeBottomPanel}/>
                 </SplitPane>
             </div>
         );
     }
+
+    private onMaximizeBottomPanel = () => {
+        if (this.state.minimized) {
+            this.setState({
+                bottomPanelSize: this.bottomPanelMaximizedHeight,
+                minimized: false
+            })
+        }
+    };
+
+    private onMinimizeBottomPanel = () => {
+        this.setState({
+            bottomPanelSize: this.bottomPanelMinimizedHeight,
+            minimized: true
+        })
+    };
 
     private onResize = () => {
         if (this.monacoWrapperRef.current) {
@@ -56,6 +76,11 @@ export class Exercise extends React.Component {
     };
 
     private onResizeHorizontal = (size: number) => {
+        this.setState({
+            bottomPanelSize: this.bottomPanelMinimizedHeight,
+            minimized: false
+        });
+
         const exerciseContent = document.getElementById("exerciseContent");
         if (exerciseContent) {
             exerciseContent.style.height = `${size - 50}px`;

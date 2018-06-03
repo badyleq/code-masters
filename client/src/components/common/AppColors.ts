@@ -20,7 +20,7 @@ export const lightColorTheme: IColorTheme = {
 };
 
 export const darkColorTheme: IColorTheme = {
-    font: lightBackground,
+    font: "#d4d4d4",
     background: darkBackground,
     editorTheme: "vs-dark",
     themeId: "dark"

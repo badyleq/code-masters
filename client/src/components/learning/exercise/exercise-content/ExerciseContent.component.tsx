@@ -47,7 +47,7 @@ export class ExerciseContent extends React.Component {
                             Lesson 6/12
                         </Grid>
                         <Grid item={true} sm={10}>
-                            <Typography variant="display1" gutterBottom={true}> Metoda main </Typography>
+                            <Typography variant="display1" gutterBottom={true} style={{color: codeMastersUITheme.font}}> Metoda main </Typography>
                         </Grid>
                     </Grid>
 
