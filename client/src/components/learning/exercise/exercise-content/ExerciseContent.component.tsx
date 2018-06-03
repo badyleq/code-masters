@@ -19,7 +19,11 @@ const javaCode = `public static void main(String[] args) {
     // your code 
 }`;
 
-export class ExerciseContent extends React.Component {
+interface IExerciseContentProps {
+    bottomPanelSize: number
+}
+
+export class ExerciseContent extends React.Component<IExerciseContentProps, any> {
 
     public getCheckboxColor(value: number) {
         if (value === 0) {
@@ -47,11 +51,12 @@ export class ExerciseContent extends React.Component {
                             Lesson 6/12
                         </Grid>
                         <Grid item={true} sm={10}>
-                            <Typography variant="display1" gutterBottom={true} style={{color: codeMastersUITheme.font}}> Metoda main </Typography>
+                            <Typography variant="display1" gutterBottom={true} style={{color: codeMastersUITheme.font}}> Metoda
+                                main </Typography>
                         </Grid>
                     </Grid>
 
-                    <Scrollbars autoHeight={true} autoHeightMin={500}>
+                    <Scrollbars autoHeight={true} autoHeightMin={window.innerHeight - this.props.bottomPanelSize}>
                         <p>
                             Aplikacja zaimplementowana w języku Java to kolekcja klas. Każda z klas zawiera pewne
                             zmienne i

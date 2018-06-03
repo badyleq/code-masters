@@ -59,7 +59,7 @@ export class Exercise extends React.Component<IExerciseProps, IExerciseState> {
                                defaultSize={"calc(50%)"}
                                primary="second"
                                onChange={this.onResize}>
-                        <ExerciseContent/>
+                        <ExerciseContent bottomPanelSize={this.state.bottomPanelSize}/>
                         <MonacoWrapper ref={this.monacoWrapperRef} code={code}/>
                     </SplitPane>
                     <BottomPanel bottomPanelSize={this.state.bottomPanelSize}
