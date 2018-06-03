@@ -7,13 +7,33 @@ import {COMMENTS_MOCK} from "../IComment";
 import Scrollbars from "react-custom-scrollbars";
 import AnswerComment from "../answer-comment/AnswerComment";
 
-export class CommentList extends React.Component<any, any> {
+interface ICommentListState {
+    height: number,
+}
+
+export class CommentList extends React.Component<any, ICommentListState> {
+    private readonly bottomPanelTabsHeight = 150;
+
+    constructor(props: any) {
+        super(props);
+        this.state = {
+            height: this.props.height
+        }
+    }
 
     public render() {
         return (
-            <div style={{height: "100%", padding: "20px", backgroundColor: codeMastersUITheme.background}}>
+            <div
+                style={{
+                    height: `${this.props.height - this.bottomPanelTabsHeight}px`,
+                    padding: "20px",
+                    backgroundColor: codeMastersUITheme.background,
+                    overflowY: "auto"
+                }}>
+
                 <AnswerComment/>
-                <Scrollbars autoHeight={true} autoHeightMin={300}>
+
+                <Scrollbars autoHeightMin={Math.abs(this.props.height - 300)} autoHeight={true}>
                     <List>
                         {COMMENTS_MOCK.map((comment, index) =>
                             <Comment key={index}

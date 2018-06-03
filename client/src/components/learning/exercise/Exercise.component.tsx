@@ -17,16 +17,31 @@ public class Hello {
    }
 }`;
 
-export class Exercise extends React.Component {
-    public readonly bottomPanelMinimizedHeight = 115;
-    public readonly bottomPanelMaximizedHeight = 400;
+interface IExerciseState {
+    completed: number,
+    bottomPanelSize: number,
+    minimized: boolean
+}
 
-    public state = {
-        completed: 40,
-        bottomPanelSize: this.bottomPanelMinimizedHeight,
-        minimized: true
-    };
+interface IExerciseProps {
+    completed: number,
+    bottomPanelSize: number,
+    minimized: boolean
+}
+
+export class Exercise extends React.Component<IExerciseProps, IExerciseState> {
+    public readonly bottomPanelMinimizedHeight = 115;
+    public readonly bottomPanelDefaultHeight = 400;
     public monacoWrapperRef: RefObject<MonacoWrapper> = React.createRef();
+
+    constructor(props?: any) {
+        super(props);
+        this.state = {
+            completed: 40,
+            bottomPanelSize: this.bottomPanelMinimizedHeight,
+            minimized: true
+        }
+    }
 
     public render() {
         return (
@@ -47,7 +62,11 @@ export class Exercise extends React.Component {
                         <ExerciseContent/>
                         <MonacoWrapper ref={this.monacoWrapperRef} code={code}/>
                     </SplitPane>
-                    <BottomPanel onMinimize={this.onMinimizeBottomPanel} onMaximize={this.onMaximizeBottomPanel}/>
+                    <BottomPanel bottomPanelSize={this.state.bottomPanelSize}
+                                 showFullScreenCallback={this.showFullScreenCallback}
+                                 closeFullScreenCallback={this.closeFullScreenCallback}
+                                 onMinimize={this.onMinimizeBottomPanel}
+                                 onMaximize={this.onMaximizeBottomPanel}/>
                 </SplitPane>
             </div>
         );
@@ -56,11 +75,24 @@ export class Exercise extends React.Component {
     private onMaximizeBottomPanel = () => {
         if (this.state.minimized) {
             this.setState({
-                bottomPanelSize: this.bottomPanelMaximizedHeight,
-                minimized: false
+                minimized: false,
+                bottomPanelSize: this.bottomPanelDefaultHeight
             })
         }
     };
+
+    private showFullScreenCallback = () => {
+        this.setState({
+            bottomPanelSize: window.innerHeight,
+        });
+    };
+
+    private closeFullScreenCallback = () => {
+        this.setState({
+            bottomPanelSize: this.bottomPanelDefaultHeight,
+        });
+    };
+
 
     private onMinimizeBottomPanel = () => {
         this.setState({
@@ -77,7 +109,7 @@ export class Exercise extends React.Component {
 
     private onResizeHorizontal = (size: number) => {
         this.setState({
-            bottomPanelSize: this.bottomPanelMinimizedHeight,
+            bottomPanelSize: window.innerHeight - size,
             minimized: false
         });
 

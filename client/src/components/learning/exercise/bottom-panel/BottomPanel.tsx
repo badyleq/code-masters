@@ -15,9 +15,15 @@ import Settings from "../settings/Settings";
 import {ModalWrapper} from "../../../common/modal-wrapper/ModalWrapper";
 import Logger from "../../../common/service/Logger";
 
-export default class BottomPanel extends React.Component<any, any> {
-    public state: any;
+interface IBottonPanelProps {
+    bottomPanelSize: number,
+    onMinimize: () => void,
+    onMaximize: () => void,
+    showFullScreenCallback?: () => void,
+    closeFullScreenCallback?: () => void
+}
 
+export default class BottomPanel extends React.Component<IBottonPanelProps, any> {
     private logger = new Logger(BottomPanel);
     private consoleModalRef: RefObject<ModalWrapper> = React.createRef();
     private commentsModalRef: RefObject<ModalWrapper> = React.createRef();
@@ -38,7 +44,7 @@ export default class BottomPanel extends React.Component<any, any> {
 
     public render() {
         return (
-            <div style={{borderTop: `1px solid ${codeMastersUITheme.primary}`}}>
+            <div style={{borderTop: `1px solid ${codeMastersUITheme.primary}`, height: "100%"}}>
                 <AppBar position="static">
                     <Grid container={true} style={{backgroundColor: codeMastersUITheme.background, color: codeMastersUITheme.font}}>
                         <Grid item={true} sm={8}>
@@ -63,9 +69,17 @@ export default class BottomPanel extends React.Component<any, any> {
                 </AppBar>
 
                 <SwipeableViews axis={"x"} index={this.state.selectedTab} onChangeIndex={this.handleChangeIndex}>
-                    <ModalWrapper ref={this.consoleModalRef} modalTitle="console" content={<Console/>}/>
-                    <ModalWrapper ref={this.commentsModalRef} modalTitle="comments" content={<CommentList/>}/>
-                    <ModalWrapper ref={this.settingsModalRef} modalTitle="settings" content={<Settings/>}/>
+                    <ModalWrapper closeFullScreenCallback={this.props.closeFullScreenCallback}
+                                  ref={this.consoleModalRef}
+                                  modalTitle="console"
+                                  content={<Console/>}/>
+                    <ModalWrapper closeFullScreenCallback={this.props.closeFullScreenCallback}
+                                  ref={this.commentsModalRef} modalTitle="comments"
+                                  content={<CommentList height={this.props.bottomPanelSize}/>}/>
+                    <ModalWrapper closeFullScreenCallback={this.props.closeFullScreenCallback}
+                                  ref={this.settingsModalRef}
+                                  modalTitle="settings"
+                                  content={<Settings/>}/>
                 </SwipeableViews>
             </div>
         );
@@ -89,6 +103,10 @@ export default class BottomPanel extends React.Component<any, any> {
             if (component.current) {
                 component.current.handleOpen();
             }
+        }
+
+        if (this.props.showFullScreenCallback) {
+            this.props.showFullScreenCallback();
         }
 
         this.logger.log(`show tab: ${this.state.selectedTab} in fullscreen`);

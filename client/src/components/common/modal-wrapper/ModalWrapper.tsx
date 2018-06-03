@@ -17,7 +17,8 @@ function Transition(props: any) {
 
 interface IModalWrapperProps {
     modalTitle: string,
-    content: ReactNode
+    content: ReactNode,
+    closeFullScreenCallback?: () => void
 }
 
 interface IModalWrapperState {
@@ -38,6 +39,9 @@ export class ModalWrapper extends React.Component<IModalWrapperProps, IModalWrap
 
     public handleClose = () => {
         this.setState({showFullScreen: false});
+        if (this.props.closeFullScreenCallback) {
+            this.props.closeFullScreenCallback();
+        }
     };
 
     public render() {
@@ -49,7 +53,7 @@ export class ModalWrapper extends React.Component<IModalWrapperProps, IModalWrap
                     open={this.state.showFullScreen}
                     onClose={this.handleClose}
                     TransitionComponent={Transition}>
-                    <AppBar style={{textAlign: "right", backgroundColor: codeMastersUITheme.background, boxShadow: 'none'}}>
+                    <AppBar style={{textAlign: "right", backgroundColor: codeMastersUITheme.background, boxShadow: "none"}}>
                         <Toolbar style={{backgroundColor: codeMastersUITheme.background}}>
                             <Typography variant="title" style={{color: codeMastersUITheme.font, textAlign: "left", flex: 1}}>
                                 {this.props.modalTitle}

@@ -10,6 +10,7 @@ import WorkIcon from "@material-ui/icons/Work";
 import {codeMastersUITheme} from "../../../../App.theme";
 import Button from "@material-ui/core/Button/Button";
 import AnswerComment from "../answer-comment/AnswerComment";
+import Collapse from "@material-ui/core/Collapse/Collapse";
 
 interface ICommentProps {
     content: ReactNode,
@@ -38,14 +39,16 @@ export class Comment extends React.Component<ICommentProps, ICommentState> {
                         style={{color: codeMastersUITheme.font}}
                         primary={this.props.content}
                         secondary={
-                            <div>
+                            <span>
                                 {`${this.props.userName} ( Jan 7, 2014)`}
                                 <Button color="primary" onClick={this.handleAnswer}> answer </Button>
-                            </div>
+                            </span>
                         }/>
                 </ListItem>
 
-                {this.state.showAnswerTextField && <AnswerComment/>}
+                <Collapse mountOnEnter={true} timeout={{enter: 100, exit: 1000}} in={this.state.showAnswerTextField}>
+                    <AnswerComment/>
+                </Collapse>
 
                 <Divider inset={true}/>
 

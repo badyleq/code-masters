@@ -50,7 +50,7 @@ export const COMMENTS_MOCK: IComment[] = [
         ]
     },
     {
-        content: "nanana dupana !!!",
+        content: "ostatniiiiiiiiiii komentarz",
         userName: "Zosia",
     },
 
