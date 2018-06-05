@@ -1,16 +1,17 @@
-import * as React from "react";
-import {RefObject} from "react";
-import MonacoEditor from "react-monaco-editor";
-import {codeMastersUITheme} from "../../../App.theme";
-import Card from "@material-ui/core/Card/Card";
-import CardContent from "@material-ui/core/CardContent/CardContent";
-import Grid from "@material-ui/core/Grid/Grid";
-import Icon from "@material-ui/core/Icon/Icon";
-import Button from "@material-ui/core/Button/Button";
-import BottomPanel from "../bottom-panel/BottomPanel";
-import * as NotificationSystem from "react-notification-system";
-import CircularProgress from "@material-ui/core/CircularProgress/CircularProgress";
+import * as React from 'react';
+import {RefObject} from 'react';
+import MonacoEditor from 'react-monaco-editor';
+import {codeMastersUITheme} from '../../../App.theme';
+import Card from '@material-ui/core/Card/Card';
+import CardContent from '@material-ui/core/CardContent/CardContent';
+import Grid from '@material-ui/core/Grid/Grid';
+import Icon from '@material-ui/core/Icon/Icon';
+import Button from '@material-ui/core/Button/Button';
+import BottomPanel from '../bottom-panel/BottomPanel';
+import * as NotificationSystem from 'react-notification-system';
+import CircularProgress from '@material-ui/core/CircularProgress/CircularProgress';
 import ICodeEditor = monaco.editor.ICodeEditor;
+import codeExecutionService from '../../service/CodeExecutionService';
 
 interface IMonacoWrapperState {
     editor: ICodeEditor | null,
@@ -46,7 +47,7 @@ export default class MonacoWrapper extends React.Component<any, IMonacoWrapperSt
             remeasureEditorLayout: editorLayoutFn,
             editor
         });
-        window.addEventListener("resize", editorLayoutFn);
+        window.addEventListener('resize', editorLayoutFn);
     };
 
     public reRenderEditor() {
@@ -56,11 +57,11 @@ export default class MonacoWrapper extends React.Component<any, IMonacoWrapperSt
     }
 
     public componentWillUnmount() {
-        window.removeEventListener("resize", this.state.remeasureEditorLayout);
+        window.removeEventListener('resize', this.state.remeasureEditorLayout);
     }
 
     public componentDidMount() {
-        const wrapper = document.getElementById("monacoEditorWrapper");
+        const wrapper = document.getElementById('monacoEditorWrapper');
         if (wrapper) {
             this.setState({editorHeight: wrapper.clientHeight});
         }
@@ -71,9 +72,11 @@ export default class MonacoWrapper extends React.Component<any, IMonacoWrapperSt
     }
 
     public onExecuteCodeBtn = () => {
+        codeExecutionService.executeCode();
+
         this.notificationSystem.addNotification({
-            message: "",
-            level: "info",
+            message: '',
+            level: 'info',
             autoDismiss: 1,
             onRemove: () => {
                 if (this.executionResultRef.current) {
@@ -95,9 +98,9 @@ export default class MonacoWrapper extends React.Component<any, IMonacoWrapperSt
 
     public render() {
         return (
-            <Card style={{lineHeight: "1.5em", height: "calc(100%)", minWidth: "300px", minHeight: "100px"}}>
-                <CardContent style={{lineHeight: "1.5em", backgroundColor: codeMastersUITheme.background}}>
-                    <Grid style={{backgroundColor: codeMastersUITheme.background, textAlign: "right"}}
+            <Card style={{lineHeight: '1.5em', height: 'calc(100%)', minWidth: '300px', minHeight: '100px'}}>
+                <CardContent style={{lineHeight: '1.5em', backgroundColor: codeMastersUITheme.background}}>
+                    <Grid style={{backgroundColor: codeMastersUITheme.background, textAlign: 'right'}}
                           item={true} xs={12} sm={12} text-align="right">
                         <Button disabled={true} color="primary">
                             <Icon>navigate_next</Icon> Dalej
@@ -107,7 +110,7 @@ export default class MonacoWrapper extends React.Component<any, IMonacoWrapperSt
                         </Button>
                     </Grid>
 
-                    <div id="monacoEditorWrapper" style={{height: "calc(70vh)"}}>
+                    <div id="monacoEditorWrapper" style={{height: 'calc(70vh)'}}>
                         <MonacoEditor
                             width="100%"
                             height={this.state.editorHeight}
