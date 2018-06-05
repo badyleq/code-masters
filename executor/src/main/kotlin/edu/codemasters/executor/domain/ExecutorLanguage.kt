@@ -1,4 +1,4 @@
-package edu.codemasters.learning.domain.execution
+package edu.codemasters.executor.domain
 
 enum class ExecutorLanguage {
     JAVA,

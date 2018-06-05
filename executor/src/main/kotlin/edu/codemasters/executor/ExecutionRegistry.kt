@@ -1,4 +1,4 @@
-package edu.codemasters.learning.execution
+package edu.codemasters.executor
 
 import edu.codemasters.learning.domain.execution.Executor
 import edu.codemasters.learning.domain.execution.ExecutorLanguage

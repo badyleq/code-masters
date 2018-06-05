@@ -1,4 +1,4 @@
-package edu.codemasters.learning.execution.javac
+package edu.codemasters.executor.javac
 
 import com.google.common.collect.Lists.newArrayList
 import java.io.IOException

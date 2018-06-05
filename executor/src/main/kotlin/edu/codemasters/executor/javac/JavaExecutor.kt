@@ -1,4 +1,4 @@
-package edu.codemasters.learning.execution.javac
+package edu.codemasters.executor.javac
 
 import edu.codemasters.learning.domain.execution.ExecutionResult
 import edu.codemasters.learning.domain.execution.Executor

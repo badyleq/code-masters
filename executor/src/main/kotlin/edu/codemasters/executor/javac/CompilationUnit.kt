@@ -1,4 +1,4 @@
-package edu.codemasters.learning.execution.javac
+package edu.codemasters.executor.javac
 
 data class CompilationUnit(val name: String, val memoryObject: JavaMemoryObject) {
 

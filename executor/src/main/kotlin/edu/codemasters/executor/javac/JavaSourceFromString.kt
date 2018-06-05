@@ -1,4 +1,4 @@
-package edu.codemasters.learning.execution.javac
+package edu.codemasters.executor.javac
 
 import java.net.URI
 import javax.tools.JavaFileObject

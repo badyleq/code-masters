@@ -1,4 +1,4 @@
-package edu.codemasters.learning.execution.javac
+package edu.codemasters.executor.javac
 
 data class CompilationPackage(val units: List<CompilationUnit>) {
 
