@@ -14,6 +14,7 @@ group 'edu.codemasters'
 version '1.0-SNAPSHOT'
 
 apply plugin: 'kotlin'
+apply plugin: "io.ratpack.ratpack-java"
 
 repositories {
     mavenCentral()
@@ -21,6 +22,7 @@ repositories {
 
 dependencies {
     compile "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
+    compile ratpack.dependency("dropwizard-metrics")
 }
 
 compileKotlin {
