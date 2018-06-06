@@ -15,14 +15,19 @@ version '1.0-SNAPSHOT'
 
 apply plugin: 'kotlin'
 apply plugin: "io.ratpack.ratpack-java"
+apply plugin: 'application'
 
 repositories {
     mavenCentral()
 }
 
+mainClassName = "edu.ServerKt"
+
 dependencies {
     compile "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
     compile ratpack.dependency("dropwizard-metrics")
+    compile group: 'ch.qos.logback', name: 'logback-classic', version: '1.2.3'
+    runtimeClasspath group: 'io.netty', name: 'netty-transport-native-epoll', version: '4.1.25.Final'
 }
 
 compileKotlin {
@@ -30,4 +35,17 @@ compileKotlin {
 }
 compileTestKotlin {
     kotlinOptions.jvmTarget = "1.8"
+}
+
+jar {
+    manifest {
+        attributes 'Main-Class': "$mainClassName"
+    }
+}
+
+task start(type: JavaExec) {
+    workingDir = './build'
+    classpath = sourceSets.main.runtimeClasspath
+    ignoreExitValue = true
+    main = "$mainClassName"
 }
