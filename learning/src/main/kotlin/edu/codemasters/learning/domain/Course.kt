@@ -1,7 +1,5 @@
 package edu.codemasters.learning.domain
 
-import edu.codemasters.learning.domain.execution.ExecutorLanguage
-
 enum class CourseState {
     DRAFT,
     APPROVED,
