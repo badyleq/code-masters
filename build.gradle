@@ -29,14 +29,4 @@ compileTestKotlin {
     kotlinOptions.jvmTarget = "1.8"
 }
 
-task npmInstall(type: Exec) {
-    workingDir 'client'
-    commandLine 'npm', 'install'
-}
-
-task webpack(type: Exec, dependsOn: npmInstall) {
-    workingDir 'client'
-    commandLine 'npm', 'start'
-}
-
-task stage(dependsOn: ['clean', 'build', 'webpack'])
+task stage(dependsOn: ['clean', 'build'])
