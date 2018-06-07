@@ -1,1 +1,1 @@
-web: sh -c 'cd ./client/ && exec node scripts/start.js'
+web: sh -c 'cd ./client/ && node scripts/start.js'
