@@ -1,0 +1,19 @@
+{
+  "name": "code-masters",
+  "version": "1.0.0",
+  "description": "## Used technologies",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/klolo/code-masters.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/klolo/code-masters/issues"
+  },
+  "homepage": "https://github.com/klolo/code-masters#readme"
+}
