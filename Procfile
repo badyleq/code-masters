@@ -1,1 +1,1 @@
-web: node ./client/scripts/start.js
+web: sh -c 'cd ./client/ && npm install && npm start'
