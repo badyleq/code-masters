@@ -29,4 +29,4 @@ compileTestKotlin {
     kotlinOptions.jvmTarget = "1.8"
 }
 
-task stage(dependsOn: ['clean', 'build'])
+task stage(dependsOn: [':executor:installDist'])
