@@ -1,1 +1,0 @@
-web: sh -c 'cd ./client/ && npm install && npm run build && node ./server.js'
