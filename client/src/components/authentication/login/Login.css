@@ -1,0 +1,14 @@
+.login-box {
+    margin-top: auto;
+    background-color: white;
+    width: 61%;
+    max-width: 650px;
+    margin-top: 6em;
+    line-height: 4em;
+}
+
+.term-of-user {
+    line-height: 1.2em;
+    font-weight: 50;
+    color: rgba(0, 0, 0, 0.54);
+}

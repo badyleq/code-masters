@@ -9,6 +9,9 @@ export const codeMastersUITheme = {
     primary,
     secondary,
     theme: createMuiTheme({
+        typography: {
+            "fontSize": 12,
+        },
         palette: {
             primary: {
                 main: primary,
