@@ -25,7 +25,11 @@ repositories {
 }
 
 dependencies {
+    compile project(':common')
+
     compile "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
+    compile group: 'ch.qos.logback', name: 'logback-classic', version: '1.2.3'
+
     compile ratpack.dependency("dropwizard-metrics")
 
     testCompile 'io.kotlintest:kotlintest-runner-junit5:3.0.4'

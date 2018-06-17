@@ -4,7 +4,7 @@ import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
 import Card from "@material-ui/core/Card/Card";
 import CardContent from "@material-ui/core/CardContent/CardContent";
-import {codeMastersUITheme} from "../../../App.theme";
+import { codeMastersUITheme } from "../../../App.theme";
 import Scrollbars from "react-custom-scrollbars";
 import Stepper from '@material-ui/core/Stepper';
 import Step from '@material-ui/core/Step';
@@ -48,7 +48,7 @@ export class ExerciseContent extends React.Component<IExerciseContentProps, any>
         activeStep: 0,
     };
 
-   public handleNext = () => {
+    public handleNext = () => {
         this.setState({
             activeStep: this.state.activeStep + 1,
         });
@@ -69,7 +69,7 @@ export class ExerciseContent extends React.Component<IExerciseContentProps, any>
     public render() {
         const classes: any = this.props;
         const steps = ExerciseContent.getSteps();
-        const {activeStep} = this.state;
+        const { activeStep } = this.state;
         return (
             <Card
                 style={{
@@ -78,15 +78,15 @@ export class ExerciseContent extends React.Component<IExerciseContentProps, any>
                     backgroundColor: codeMastersUITheme.background,
                     color: codeMastersUITheme.font
                 }}>
-                <CardContent style={{lineHeight: "1.5em"}} id="exerciseContent">
+                <CardContent style={{ lineHeight: "1.5em" }} id="exerciseContent">
                     <Grid container={true} spacing={16}>
                         <Grid item={true} xs={12} sm={12}>
                             Lesson 6/12
                         </Grid>
                         <Grid item={true} sm={10}>
-                            <Typography variant="display1" gutterBottom={true}
-                                        style={{color: codeMastersUITheme.font}}> Metoda
-                                main </Typography>
+                            <Typography variant="display1" className="light-font" gutterBottom={true} style={{ color: codeMastersUITheme.font }}>
+                                Metoda  main
+                            </Typography>
                         </Grid>
                     </Grid>
 
@@ -108,7 +108,7 @@ export class ExerciseContent extends React.Component<IExerciseContentProps, any>
                             aplikację podajemy nazwę klasy której metoda main(…) ma być uruchomiona. Od metody
                             main(…)
                             tej
-                            właśnie klasy rozpoczyna się wykonywanie kodu naszego programu.<br/><br/>
+                            właśnie klasy rozpoczyna się wykonywanie kodu naszego programu.<br /><br />
                         </p>
                         <Typography variant="headline" gutterBottom={true}> Do zrobienia: </Typography>
                         <div className={classes.root}>

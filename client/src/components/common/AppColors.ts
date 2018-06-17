@@ -13,7 +13,7 @@ export interface IColorTheme {
 }
 
 export const lightColorTheme: IColorTheme = {
-    font: darkBackground,
+    font: "rgba(0, 0, 0, 0.74)",
     background: lightBackground,
     editorTheme: "vs-light",
     themeId: "light"

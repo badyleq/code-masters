@@ -37,6 +37,7 @@ export default class MonacoWrapper extends React.Component<any, IMonacoWrapperSt
         minimap: {
             enabled: false
         },
+        fontSize: 12,
         selectOnLineNumbers: true,
         scrollbar: {}
     };

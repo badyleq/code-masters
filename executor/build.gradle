@@ -24,11 +24,12 @@ repositories {
 mainClassName = "edu.ServerKt"
 
 dependencies {
+    compile project(':common')
     compile "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
     compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
     compile ratpack.dependency("dropwizard-metrics")
-    compile group: 'ch.qos.logback', name: 'logback-classic', version: '1.2.3'
-    runtimeClasspath group: 'io.netty', name: 'netty-transport-native-epoll', version: '4.1.25.Final'
+
+    compile group: 'io.netty', name: 'netty-transport-native-epoll', version: '4.0.27.Final', classifier: 'linux-x86_64'
 }
 
 compileKotlin {
