@@ -1,14 +1,7 @@
 import * as React from "react";
-import Draft, {htmlToDraft} from "react-wysiwyg-typescript";
-import {EditorState} from "draft-js";
-import Card from "@material-ui/core/Card/Card";
-import CardContent from "@material-ui/core/CardContent/CardContent";
-import TextField from "@material-ui/core/TextField/TextField";
-import Grid from "@material-ui/core/Grid/Grid";
-import Divider from "@material-ui/core/Divider/Divider";
-import Typography from "@material-ui/core/Typography/Typography";
-import Icon from "@material-ui/core/Icon/Icon";
-import IconButton from "@material-ui/core/IconButton/IconButton";
+import Draft, { htmlToDraft } from "react-wysiwyg-typescript";
+import { EditorState } from "draft-js";
+import { Slide, IconButton, Icon, Typography, Divider, Grid, TextField, CardContent, Card } from "@material-ui/core";
 
 export default class CourseCreator extends React.Component {
     public state = {
@@ -26,61 +19,63 @@ export default class CourseCreator extends React.Component {
 
     public render() {
         return (
-            <div className="app-container" style={{backgroundColor: "#f3f3f3"}}>
-                <Card>
-                    <CardContent>
-                        <Grid container={true} spacing={24}>
-                            <Grid item={true} sm={12}>
-                                <Typography variant="headline" gutterBottom={true}>
-                                    Course name
+            <Slide direction="up" in={true} mountOnEnter={true} unmountOnExit={true}>
+                <div className="app-container" style={{ backgroundColor: "#f3f3f3" }}>
+                    <Card className="disable-shadow">
+                        <CardContent>
+                            <Grid container={true} spacing={24}>
+                                <Grid item={true} sm={12}>
+                                    <Typography variant="headline" gutterBottom={true}>
+                                        Course name
                                 </Typography>
-                                <TextField
-                                    placeholder="your magic framework course name"
-                                    InputLabelProps={{
-                                        shrink: true,
-                                    }}
-                                    fullWidth={true}
-                                    margin="normal"
-                                />
-                            </Grid>
-                            <Divider light={true}/>
-                            <Grid item={true} sm={12}>
-                                <Typography variant="headline" gutterBottom={true}>
-                                    Description
+                                    <TextField
+                                        placeholder="your magic framework course name"
+                                        InputLabelProps={{
+                                            shrink: true,
+                                        }}
+                                        fullWidth={true}
+                                        margin="normal"
+                                    />
+                                </Grid>
+                                <Divider light={true} />
+                                <Grid item={true} sm={12}>
+                                    <Typography variant="headline" gutterBottom={true}>
+                                        Description
                                 </Typography>
-                                <Draft editorState={this.state.editorState} onEditorStateChange={this.editState}/>
+                                    <Draft editorState={this.state.editorState} onEditorStateChange={this.editState} />
+                                </Grid>
                             </Grid>
-                        </Grid>
 
-                        <Grid container={true} spacing={24}>
-                            <Grid item={true} sm={12}>
-                                <Typography variant="headline" gutterBottom={true}>
-                                    Exercises
+                            <Grid container={true} spacing={24}>
+                                <Grid item={true} sm={12}>
+                                    <Typography variant="headline" gutterBottom={true}>
+                                        Exercises
                                 </Typography>
-                            </Grid>
-                            <Grid item={true} sm={3}>
-                                <Card>
-                                    <CardContent>
-                                        exercise 1
+                                </Grid>
+                                <Grid item={true} sm={3}>
+                                    <Card>
+                                        <CardContent>
+                                            exercise 1
                                     </CardContent>
-                                </Card>
-                            </Grid>
-                            <Grid item={true} sm={3}>
-                                <Card>
-                                    <CardContent>
-                                        exercise 1
+                                    </Card>
+                                </Grid>
+                                <Grid item={true} sm={3}>
+                                    <Card>
+                                        <CardContent>
+                                            exercise 1
                                     </CardContent>
-                                </Card>
+                                    </Card>
+                                </Grid>
+                                <Grid item={true} sm={3}>
+                                    <IconButton>
+                                        <Icon style={{ height: "100px" }}>add_box</Icon>
+                                    </IconButton>
+                                </Grid>
                             </Grid>
-                            <Grid item={true} sm={3}>
-                                <IconButton>
-                                    <Icon style={{height: "100px"}}>add_box</Icon>
-                                </IconButton>
-                            </Grid>
-                        </Grid>
-                    </CardContent>
-                </Card>
-            </div>
+                        </CardContent>
+                    </Card>
+                </div>
+            </Slide>
         );
     }
 }
