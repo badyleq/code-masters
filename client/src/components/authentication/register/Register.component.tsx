@@ -31,20 +31,20 @@ export default class Register extends React.Component<IRegisterProps, IRegisterS
                 <Typography variant="display2" className="light-font" gutterBottom={true}> Registration </Typography>
                 <Slide direction="up" in={this.state.page === RegisterPage.TERMS_OF_USE} mountOnEnter={false} unmountOnExit={true}>
                     <div>
-                        <Scrollbars autoHeight={true} height="400">
-                            <p className="term-of-user light-font">
+                        <Scrollbars autoHeight={true} autoHeightMin={400}>
+                            <p className="light-font-p light-font">
                                 1. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
                                  labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi
                                   ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
                                    cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt
                                     mollit anim id est laborum </p>
-                            <p className="term-of-user light-font">
+                            <p className="light-font-p light-font">
                                 2. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
                                  labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi
                                   ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
                                    cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt
                                     mollit anim id est laborum </p>
-                            <p className="term-of-user light-font">
+                            <p className="light-font-p light-font">
                                 3.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
                                  labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi
                                   ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
@@ -52,10 +52,11 @@ export default class Register extends React.Component<IRegisterProps, IRegisterS
                                     mollit anim id est laborum </p>
                         </Scrollbars>
                         <Grid container={true} spacing={0}>
-                                <Grid item={true} sm={12} style={{ textAlign: "right", marginTop: '1em' }} >
-                                    <Button variant="outlined" color="primary" onClick={this.onNext}>accept</Button>
-                                </Grid>
+                            <Grid item={true} sm={12} style={{ textAlign: "right", marginTop: '1em' }} >
+                                <Button variant="flat" color="primary" onClick={this.onNext}>reject</Button>
+                                <Button variant="outlined" color="primary" onClick={this.onNext}>accept</Button>
                             </Grid>
+                        </Grid>
                     </div>
                 </Slide>
                 <Slide direction="up" in={this.state.page === RegisterPage.FILL_IN} mountOnEnter={true}>

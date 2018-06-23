@@ -63,7 +63,6 @@ export class Exercise extends React.Component<IExerciseProps, IExerciseState> {
                 start = timestamp;
             }
 
-            debugger;
             const elapsedTime = (timestamp - start) / 10000
             const progress = elapsedTime / animationTime;
             const nextSize  = this.bottomPanelMinimizedHeight + (this.bottomPanelDefaultHeight * progress);
