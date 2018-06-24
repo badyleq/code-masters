@@ -5,6 +5,7 @@ import { Route, Switch } from "react-router-dom";
 import AppDashboard from "./dashboard/Dashboard.component";
 import CourseCreator from "./learning/creator/course-creator/CourseCreator.component";
 import NotFound from "./common/not-found/NotFound.component";
+import Course from "./learning/course/Course.component";
 
 export class AppRouting extends React.Component<any, any> {
 
@@ -14,6 +15,7 @@ export class AppRouting extends React.Component<any, any> {
                 <Switch>
                     <Route path="/" exact={true} component={AppDashboard} />
                     <Route path="/login" component={Login} />
+                    <Route path="/course/:id" component={Course} />
                     <Route path="/exercise" component={Exercise} />
                     <Route path="/dashboard" component={AppDashboard} />
                     <Route path="/course-creator" component={CourseCreator} />

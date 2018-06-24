@@ -71,8 +71,8 @@
 
 .light-font-p {
     line-height: 1.5em;
-    font-weight: 50;
-    color: rgba(0, 0, 0, 0.54);
+    font-weight: 100;
+    color: rgba(0, 0, 0, 0.54) !important;
 }
 
 .disable-shadow {
