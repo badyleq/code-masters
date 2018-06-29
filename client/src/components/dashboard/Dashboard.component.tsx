@@ -38,18 +38,12 @@ export default class Dashboard extends React.Component<{}, IDashboardState> {
                                     <Grid item={true} xs={12} md={6} lg={8}>
                                         <Typography variant="display2" className="light-font" gutterBottom={true} style={{ paddingTop: '1em' }}>
                                             Welcome on code masters. It is your way to fast learning
-                                </Typography>
+                                        </Typography>
                                         <p className="light-font-p light-font">
                                             et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi
                                                    ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
                                         </p>
                                     </Grid>
-
-                                    {/* <Grid item={true} md={12} xs={12}>
-                                        <Typography variant="display2" className="light-font" gutterBottom={true} >
-                                            Our courses
-                                        </Typography>
-                                    </Grid> */}
 
                                     <Grid item={true} md={12} xs={12} style={{ marginTop: '1em', marginBottom: '1em' }}>
                                         <Input
@@ -95,7 +89,7 @@ export default class Dashboard extends React.Component<{}, IDashboardState> {
                                                         <Link to={`/course/${course.id}`} style={{ textDecoration: "none" }}>
                                                             <Button size="small" color="primary">Details</Button>
                                                         </Link>
-                                                 
+
                                                         <Button size="small" color="primary">Enroll</Button>
                                                     </CardActions>
                                                 </Card>

@@ -6,6 +6,7 @@ import Typography from "@material-ui/core/Typography/Typography";
 import { Link } from "react-router-dom";
 import Toolbar from "@material-ui/core/Toolbar/Toolbar";
 import { codeMastersUITheme } from "../../App.theme";
+import { IconButton, Icon } from "@material-ui/core";
 
 export default class TopMenu extends React.Component {
     public render(): ReactNode {
@@ -32,6 +33,10 @@ export default class TopMenu extends React.Component {
                         </Link>
                     </Typography>
 
+                    <Link to="/dashboard" style={{ textDecoration: "none" }}>
+                        <Button style={{ color: codeMastersUITheme.font, borderColor: codeMastersUITheme.primary }}>Dashboard</Button>
+                    </Link>
+
                     <Link to="/course-creator" style={{ textDecoration: "none" }}>
                         <Button style={{ color: codeMastersUITheme.font }}>create course</Button>
                     </Link>
@@ -39,12 +44,14 @@ export default class TopMenu extends React.Component {
                         <Button style={{ color: codeMastersUITheme.font }} color="primary">Exercise</Button>
                     </Link>
                     <Link to="/login" style={{ textDecoration: "none" }}>
-                        <Button style={{ color: codeMastersUITheme.font }} color="primary">Login</Button>
+                        <Button variant="outlined" color="primary" style={{ color: codeMastersUITheme.font }}>Login</Button>
                     </Link>
-                    <Link to="/dashboard" style={{ textDecoration: "none" }}>
-                        <Button style={{ color: codeMastersUITheme.font, borderColor: codeMastersUITheme.primary }}
-                            variant="outlined">Dashboard</Button>
+                    <Link to="/settings" style={{ textDecoration: "none" }}>
+                        <IconButton color="primary">
+                            <Icon>settings</Icon>
+                        </IconButton>
                     </Link>
+
                 </Toolbar>
             </AppBar >
         );
