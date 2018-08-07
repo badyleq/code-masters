@@ -74,23 +74,27 @@ export class ExerciseContent extends React.Component<IExerciseContentProps, any>
             <Card
                 style={{
                     lineHeight: "1.5em",
-                    height: "calc(100%)",
+                    height: "calc(100% -this.state.bottomPanelSize)",
                     backgroundColor: codeMastersUITheme.background,
                     color: codeMastersUITheme.font
                 }}>
-                <CardContent style={{ lineHeight: "1.5em" }} id="exerciseContent">
-                    <Grid container={true} spacing={16}>
-                        <Grid item={true} xs={12} sm={12}>
-                            Lesson 6/12
-                        </Grid>
-                        <Grid item={true} sm={10}>
-                            <Typography variant="display1" className="light-font" gutterBottom={true} style={{ color: codeMastersUITheme.font }}>
-                                Metoda  main
-                            </Typography>
-                        </Grid>
-                    </Grid>
-
+                <CardContent
+                    style={{
+                        lineHeight: "1.5em",
+                    }}
+                    id="exerciseContent">
                     <Scrollbars autoHeight={true} autoHeightMin={window.innerHeight - this.props.bottomPanelSize}>
+                        <Grid container={true} spacing={16}>
+                            <Grid item={true} xs={12} sm={12}>
+                                Lesson 6/12
+                        </Grid>
+                            <Grid item={true} sm={10}>
+                                <Typography variant="display1" className="light-font" gutterBottom={true} style={{ color: codeMastersUITheme.font }}>
+                                    Metoda  main
+                            </Typography>
+                            </Grid>
+                        </Grid>
+
                         <p>
                             Aplikacja zaimplementowana w języku Java to kolekcja klas. Każda z klas zawiera pewne
                             zmienne i

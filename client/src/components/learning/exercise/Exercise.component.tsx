@@ -39,8 +39,8 @@ export class Exercise extends React.Component<IExerciseProps, IExerciseState> {
         super(props);
         this.state = {
             completed: 40,
-            bottomPanelSize: this.bottomPanelMinimizedHeight,
-            minimized: true
+            minimized: true,
+            bottomPanelSize: this.bottomPanelMinimizedHeight
         }
     }
 
@@ -52,6 +52,8 @@ export class Exercise extends React.Component<IExerciseProps, IExerciseState> {
                 }
             }
         });
+
+        resizeBottomPanel( window.innerHeight-this.bottomPanelMinimizedHeight);
     }
 
     public animateResizeToDefaultHeight = () => {
@@ -65,7 +67,7 @@ export class Exercise extends React.Component<IExerciseProps, IExerciseState> {
 
             const elapsedTime = (timestamp - start) / 10000
             const progress = elapsedTime / animationTime;
-            const nextSize  = this.bottomPanelMinimizedHeight + (this.bottomPanelDefaultHeight * progress);
+            const nextSize = this.bottomPanelMinimizedHeight + (this.bottomPanelDefaultHeight * progress);
             if (nextSize < this.bottomPanelDefaultHeight) {
                 this.setState({
                     bottomPanelSize: nextSize
@@ -139,6 +141,7 @@ export class Exercise extends React.Component<IExerciseProps, IExerciseState> {
             bottomPanelSize: this.bottomPanelMinimizedHeight,
             minimized: true
         })
+        resizeBottomPanel( window.innerHeight-this.bottomPanelMinimizedHeight);
     };
 
     private onResize = () => {
@@ -153,14 +156,17 @@ export class Exercise extends React.Component<IExerciseProps, IExerciseState> {
             minimized: false
         });
 
-        const exerciseContent = document.getElementById("exerciseContent");
-        if (exerciseContent) {
-            exerciseContent.style.height = `${size - 50}px`;
+        resizeBottomPanel(size);
+    }
+}
 
-            const executionResult = document.getElementById("executionResult");
-            if (executionResult) {
-                executionResult.style.height = `${size - 50}px`;
-            }
+function resizeBottomPanel(size: number) {
+    const exerciseContent = document.getElementById("exerciseContent");
+    if (exerciseContent) {
+        exerciseContent.style.height = `${size - 40}px`;
+        const executionResult = document.getElementById("executionResult");
+        if (executionResult) {
+            executionResult.style.height = `${size - 40}px`;
         }
     }
 }

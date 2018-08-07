@@ -33,11 +33,12 @@ export default class MonacoWrapper extends React.Component<any, IMonacoWrapperSt
      * Konfiguracja edutora Monaco.
      * @see{@link monaco.editor.IEditorOptions}
      */
-    private options = {
+    private options: monaco.editor.IEditorOptions = {
         minimap: {
             enabled: false
         },
         fontSize: 12,
+        lineHeight: 20,
         selectOnLineNumbers: true,
         scrollbar: {}
     };
